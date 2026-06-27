@@ -1,0 +1,6 @@
+{
+  "name": "The Basement",
+  "description": "A PS1-inspired, procedural first-person horror game where you must navigate a dark, foggy basement to find keys and escape a lurking shadow creature.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
