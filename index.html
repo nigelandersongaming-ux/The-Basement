@@ -184,7 +184,7 @@
                     <span id="keys-hud" class="text-sm font-bold tracking-widest text-red-500 glitch-text">0 / 3</span>
                 </div>
                 <!-- Visually collected key icons overlay -->
-                <div id="keys-inventory" class="flex gap-3 mt-2.5 pt-2 border-t border-white/5">
+                <div id="keys-inventory" class="flex gap-3 mt-2.5 pt-2 border-t border-white/5 items-center">
                     <div id="key-icon-0" class="key-slot opacity-20 text-gray-500 transition-all duration-500 transform scale-95" title="Red Key">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-6 h-6 filter">
                             <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/>
@@ -199,6 +199,13 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-6 h-6 filter">
                             <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/>
                         </svg>
+                    </div>
+                    <!-- Crowbar HUD Slot -->
+                    <div id="crowbar-icon" class="key-slot opacity-20 text-gray-500 transition-all duration-500 transform scale-95 ml-auto flex items-center gap-1 border-l border-white/10 pl-3" title="Crowbar">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="w-5 h-5 text-amber-500">
+                            <path d="M5 2a2 2 0 0 1 2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2M5 2V4a2 2 0 0 0 2 2M5 2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2"/>
+                        </svg>
+                        <span class="text-[8px] text-zinc-500 font-bold tracking-widest uppercase">CROWBAR</span>
                     </div>
                 </div>
             </div>
@@ -285,6 +292,52 @@
         </div>
     </div>
 
+    <!-- MOBILE CONTROLS OVERLAY (Shown on touch devices) -->
+    <div id="mobile-controls-overlay" class="hidden absolute inset-0 w-full h-full z-15 pointer-events-none select-none">
+        <!-- Left Joystick Zone -->
+        <div id="joystick-zone" class="absolute bottom-8 left-8 w-32 h-32 flex items-center justify-center bg-black/45 border-2 border-white/15 rounded-full pointer-events-auto backdrop-blur-xs shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+            <div id="joystick-knob" class="w-12 h-12 bg-white/20 border border-white/55 rounded-full shadow-[0_0_12px_rgba(255,255,255,0.25)]"></div>
+        </div>
+
+        <!-- Right Buttons Grid -->
+        <div class="absolute bottom-8 right-8 flex flex-col gap-3.5 items-end pointer-events-auto">
+            <!-- Interact Button -->
+            <button id="btn-mobile-interact" class="w-20 h-20 bg-red-950/80 border-2 border-red-500/40 rounded-full active:scale-95 transition-transform flex flex-col items-center justify-center shadow-[0_0_20px_rgba(239,68,68,0.3)]">
+                <span class="text-xs font-black text-red-500 tracking-widest uppercase">INTERACT</span>
+                <span class="text-[8px] font-bold text-red-600/70 tracking-tight uppercase mt-0.5">[E]</span>
+            </button>
+            
+            <div class="flex gap-3">
+                <!-- Crouch Button -->
+                <button id="btn-mobile-crouch" class="w-14 h-14 bg-black/85 border border-white/20 rounded-full active:scale-95 transition-transform flex flex-col items-center justify-center text-zinc-400">
+                    <span class="text-[8px] font-bold tracking-widest uppercase leading-none font-mono">CROUCH</span>
+                    <span class="text-[7px] font-bold text-zinc-500 tracking-tighter uppercase mt-0.5">[C]</span>
+                </button>
+                <!-- Sprint Button -->
+                <button id="btn-mobile-sprint" class="w-14 h-14 bg-black/85 border border-white/20 rounded-full active:scale-95 transition-transform flex flex-col items-center justify-center text-zinc-400 font-mono">
+                    <span class="text-[8px] font-bold tracking-widest uppercase leading-none">SPRINT</span>
+                    <span class="text-[7px] font-bold text-zinc-500 tracking-tighter uppercase mt-0.5">[SHIFT]</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Top Right Utility Buttons -->
+        <div class="absolute top-6 right-6 flex gap-2.5 pointer-events-auto">
+            <!-- Flashlight Button -->
+            <button id="btn-mobile-flashlight" class="px-3.5 py-2.5 bg-black/85 border border-amber-500/35 text-amber-500 text-xs font-bold rounded shadow-[0_0_10px_rgba(245,158,11,0.15)] active:scale-95 transition-all">
+                FLASHLIGHT [F]
+            </button>
+            <!-- Map Button -->
+            <button id="btn-mobile-map" class="px-3.5 py-2.5 bg-black/85 border border-zinc-500/35 text-zinc-300 text-xs font-bold rounded shadow-[0_0_10px_rgba(255,255,255,0.1)] active:scale-95 transition-all">
+                MAP [M]
+            </button>
+            <!-- Pause Button -->
+            <button id="btn-mobile-pause" class="px-3.5 py-2.5 bg-black/85 border border-red-500/35 text-red-500 text-xs font-bold rounded shadow-[0_0_10px_rgba(239,68,68,0.15)] active:scale-95 transition-all">
+                PAUSE
+            </button>
+        </div>
+    </div>
+
     <!-- SCREENS & MENUS -->
     <div id="screen-overlay" class="absolute inset-0 w-full h-full z-20 flex justify-center items-center bg-[#050505] text-[#d1d1d1] font-mono select-none transition-all duration-700">
         
@@ -354,11 +407,23 @@
                     <span class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                     <span class="text-xl tracking-[0.3em] text-white/45 group-hover:text-white/80 transition-colors">SETTINGS</span>
                 </button>
+                <button id="btn-achievements" class="group relative px-12 py-2 cursor-pointer border-0 bg-transparent">
+                    <span class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                    <span class="text-xl tracking-[0.3em] text-white/45 group-hover:text-white/80 transition-colors">ACHIEVEMENTS</span>
+                </button>
                 <button id="btn-credits" class="group relative px-12 py-2 cursor-pointer border-0 bg-transparent">
                     <span class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></span>
                     <span class="text-xl tracking-[0.3em] text-white/45 group-hover:text-white/80 transition-colors">CREDITS</span>
                 </button>
             </nav>
+
+            <!-- Difficulty Selector -->
+            <div class="mt-6 flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-sm text-xs select-none relative z-20">
+                <span class="text-white/40 tracking-widest uppercase font-bold text-[10px]">DIFFICULTY:</span>
+                <button id="btn-diff-easy" class="px-2.5 py-1 rounded-sm text-[10px] font-bold border border-zinc-700 hover:border-zinc-400 text-zinc-400 transition-all select-none">EASY</button>
+                <button id="btn-diff-normal" class="px-2.5 py-1 rounded-sm text-[10px] font-bold border border-red-950 bg-red-950/40 text-red-500 transition-all select-none">NORMAL</button>
+                <button id="btn-diff-hard" class="px-2.5 py-1 rounded-sm text-[10px] font-bold border border-zinc-700 hover:border-zinc-400 text-zinc-400 transition-all select-none">HARD</button>
+            </div>
 
             <!-- Stats Bar -->
             <div id="menu-stats" class="mt-12 text-[11px] text-zinc-500 uppercase tracking-wider border-t border-zinc-900/60 pt-4 w-full flex justify-around relative z-20 max-w-xs">
@@ -558,6 +623,86 @@
             </nav>
         </div>
 
+        <!-- ACHIEVEMENTS PANEL -->
+        <div id="menu-achievements" class="hidden flex flex-col max-w-lg w-full px-8 select-none">
+            <header class="flex flex-col items-center mb-6 text-center relative z-20">
+                <div class="text-[10px] tracking-[0.5em] text-white/40 mb-1 font-sans">SYS_COMPLETION_LOG</div>
+                <h2 class="text-4xl font-bold tracking-[0.1em] text-white opacity-90 font-mono">
+                    ACHIEVEMENTS
+                </h2>
+                <div class="h-[1px] w-24 bg-white/10 mt-3"></div>
+            </header>
+
+            <div class="flex flex-col gap-3 text-xs font-mono relative z-20 max-h-[50vh] overflow-y-auto pr-1">
+                <!-- Achievement 1 -->
+                <div id="ach-ghost" class="bg-white/5 border border-white/10 p-3 rounded flex items-center gap-4 opacity-50">
+                    <div class="ach-icon text-2xl text-zinc-600">👻</div>
+                    <div class="flex-grow text-left">
+                        <div class="font-bold text-white uppercase tracking-wider">Ghost Walker</div>
+                        <div class="text-[10px] text-zinc-400 mt-0.5">Escape the basement without using sprint (Shift).</div>
+                    </div>
+                    <div class="ach-status text-[10px] font-bold text-zinc-500">LOCKED</div>
+                </div>
+
+                <!-- Achievement 2 -->
+                <div id="ach-invisible" class="bg-white/5 border border-white/10 p-3 rounded flex items-center gap-4 opacity-50">
+                    <div class="ach-icon text-2xl text-zinc-600">👤</div>
+                    <div class="flex-grow text-left">
+                        <div class="font-bold text-white uppercase tracking-wider">Invisible</div>
+                        <div class="text-[10px] text-zinc-400 mt-0.5">Escape without being spotted by the stalker.</div>
+                    </div>
+                    <div class="ach-status text-[10px] font-bold text-zinc-500">LOCKED</div>
+                </div>
+
+                <!-- Achievement 3 -->
+                <div id="ach-historian" class="bg-white/5 border border-white/10 p-3 rounded flex items-center gap-4 opacity-50">
+                    <div class="ach-icon text-2xl text-zinc-600">📖</div>
+                    <div class="flex-grow text-left">
+                        <div class="font-bold text-white uppercase tracking-wider">Historian</div>
+                        <div class="text-[10px] text-zinc-400 mt-0.5">Find all 4 hidden story journal notes in a single run.</div>
+                    </div>
+                    <div class="ach-status text-[10px] font-bold text-zinc-500">LOCKED</div>
+                </div>
+
+                <!-- Achievement 4 -->
+                <div id="ach-speedrunner" class="bg-white/5 border border-white/10 p-3 rounded flex items-center gap-4 opacity-50">
+                    <div class="ach-icon text-2xl text-zinc-600">⚡</div>
+                    <div class="flex-grow text-left">
+                        <div class="font-bold text-white uppercase tracking-wider">Speedrunner</div>
+                        <div class="text-[10px] text-zinc-400 mt-0.5">Escape the basement in under 2 minutes.</div>
+                    </div>
+                    <div class="ach-status text-[10px] font-bold text-zinc-500">LOCKED</div>
+                </div>
+
+                <!-- Achievement 5 -->
+                <div id="ach-hardcore" class="bg-white/5 border border-white/10 p-3 rounded flex items-center gap-4 opacity-50">
+                    <div class="ach-icon text-2xl text-zinc-600">💀</div>
+                    <div class="flex-grow text-left">
+                        <div class="font-bold text-white uppercase tracking-wider">Hardcore Survivor</div>
+                        <div class="text-[10px] text-zinc-400 mt-0.5">Survive and escape on Hard difficulty.</div>
+                    </div>
+                    <div class="ach-status text-[10px] font-bold text-zinc-500">LOCKED</div>
+                </div>
+            </div>
+
+            <!-- Back Button -->
+            <button id="btn-achievements-back" class="group relative px-6 py-2 mt-6 mx-auto cursor-pointer border-0 bg-transparent text-xs tracking-widest text-white/45 hover:text-white/80 transition-colors uppercase font-mono relative z-20">
+                <span class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                RETURN TO LOBBY
+            </button>
+        </div>
+
+        <!-- Story Note Overlay -->
+        <div id="story-note-overlay" class="hidden absolute inset-0 w-full h-full z-25 flex justify-center items-center bg-black/90 pointer-events-auto select-none">
+            <div class="max-w-md w-full bg-[#f4ebd0] border-4 border-[#4a3b32] p-8 font-mono rounded-sm shadow-[0_20px_40px_rgba(0,0,0,0.9)] text-[#332211] relative" style="box-shadow: inset 0 0 50px rgba(90,70,50,0.4);">
+                <h3 class="text-center font-bold tracking-widest text-[#4a3b32] border-b-2 border-[#4a3b32]/40 pb-2 mb-4 uppercase">CRUMPLED JOURNAL PAGE</h3>
+                <p id="story-note-text" class="text-sm leading-relaxed mb-6 italic text-left whitespace-pre-line"></p>
+                <button id="btn-close-note" class="w-full py-2 bg-[#4a3b32] text-[#f4ebd0] font-bold text-xs uppercase tracking-widest hover:bg-[#5c4a3e] active:scale-95 transition-all rounded-sm">
+                    PUT DOWN NOTE
+                </button>
+            </div>
+        </div>
+
     </div>
 
     <!-- MAIN THREEJS & GAME LOGIC -->
@@ -588,7 +733,20 @@
             isMonsterActive: false,
             isGameOver: false,
             isVictorious: false,
-            escapeTimeFormatted: "0:00"
+            escapeTimeFormatted: "0:00",
+            usedSprint: false,
+            wasSpotted: false,
+            notesRead: new Set(),
+            isPowerRestored: false
+        };
+
+        // Achievements Storage
+        let achievements = {
+            ghost: false,
+            invisible: false,
+            historian: false,
+            speedrunner: false,
+            hardcore: false
         };
 
         // Hardware Config Storage
@@ -599,7 +757,8 @@
             retroRes: false,
             crtFx: true,
             headBob: true,
-            crosshair: true
+            crosshair: true,
+            difficulty: 'NORMAL'
         };
 
         // Load Settings from LocalStorage
@@ -614,6 +773,8 @@
                 console.warn("Storage reading error, using default settings", e);
             }
             updateConfigDomValues();
+            loadSavedAchievements();
+            updateDifficultyUI();
         }
 
         function saveConfig() {
@@ -622,6 +783,115 @@
             } catch (e) {
                 console.error("Failed to save settings", e);
             }
+        }
+
+        function saveAchievements() {
+            try {
+                localStorage.setItem('the_basement_ach_v2', JSON.stringify(achievements));
+            } catch(e) {}
+        }
+
+        function loadSavedAchievements() {
+            try {
+                const saved = localStorage.getItem('the_basement_ach_v2');
+                if (saved) {
+                    achievements = { ...achievements, ...JSON.parse(saved) };
+                }
+            } catch(e) {}
+            updateAchievementsUI();
+        }
+
+        function unlockAchievement(id) {
+            if (achievements[id]) return;
+            achievements[id] = true;
+            saveAchievements();
+            updateAchievementsUI();
+            showAchievementToast(id);
+        }
+
+        function showAchievementToast(id) {
+            const names = {
+                ghost: "👻 GHOST WALKER",
+                invisible: "👤 INVISIBLE",
+                historian: "📖 HISTORIAN",
+                speedrunner: "⚡ SPEEDRUNNER",
+                hardcore: "💀 HARDCORE SURVIVOR"
+            };
+            const descs = {
+                ghost: "Escaped the basement without using sprint (Shift).",
+                invisible: "Escaped without being spotted by the stalker.",
+                historian: "Found all 4 hidden story journal notes.",
+                speedrunner: "Escaped the basement in under 2 minutes.",
+                hardcore: "Survived and escaped on Hard difficulty."
+            };
+
+            const toast = document.createElement('div');
+            toast.className = "fixed top-6 right-6 z-50 bg-[#120505]/95 border-2 border-yellow-500/60 p-4 rounded-sm font-mono text-white flex items-center gap-4 shadow-[0_10px_30px_rgba(0,0,0,0.85)] max-w-sm transform translate-x-72 transition-all duration-500 select-none";
+            toast.innerHTML = `
+                <div class="text-3xl text-yellow-500 animate-bounce">🏆</div>
+                <div class="text-left flex-grow">
+                    <div class="text-[10px] tracking-widest text-yellow-500/80 font-sans uppercase font-bold">ACHIEVEMENT UNLOCKED</div>
+                    <div class="text-sm font-bold text-white uppercase mt-0.5 tracking-wider">${names[id]}</div>
+                    <div class="text-[10px] text-zinc-400 mt-1 leading-relaxed">${descs[id]}</div>
+                </div>
+            `;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-x-72');
+                audio.playKeyPickup();
+            }, 100);
+
+            setTimeout(() => {
+                toast.classList.add('translate-x-72');
+                toast.style.opacity = '0';
+                setTimeout(() => {
+                    toast.remove();
+                }, 600);
+            }, 5500);
+        }
+
+        function updateAchievementsUI() {
+            const keys = Object.keys(achievements);
+            keys.forEach(k => {
+                const row = document.getElementById(`ach-${k}`);
+                if (row) {
+                    if (achievements[k]) {
+                        row.classList.remove('opacity-50');
+                        row.classList.add('opacity-100', 'border-yellow-500/30', 'bg-yellow-500/5');
+                        const icon = row.querySelector('.ach-icon');
+                        if (icon) icon.classList.remove('text-zinc-600');
+                        const status = row.querySelector('.ach-status');
+                        if (status) {
+                            status.innerText = 'UNLOCKED';
+                            status.className = 'ach-status text-[10px] font-bold text-yellow-500';
+                        }
+                    } else {
+                        row.className = "bg-white/5 border border-white/10 p-3 rounded flex items-center gap-4 opacity-50";
+                        const icon = row.querySelector('.ach-icon');
+                        if (icon) icon.classList.add('text-zinc-600');
+                        const status = row.querySelector('.ach-status');
+                        if (status) {
+                            status.innerText = 'LOCKED';
+                            status.className = 'ach-status text-[10px] font-bold text-zinc-500';
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateDifficultyUI() {
+            const difficulties = ['easy', 'normal', 'hard'];
+            difficulties.forEach(d => {
+                const btn = document.getElementById(`btn-diff-${d}`);
+                if (btn) {
+                    if (config.difficulty.toLowerCase() === d) {
+                        btn.className = "px-2.5 py-1 rounded-sm text-[10px] font-bold border border-red-950 bg-red-950/40 text-red-500 transition-all select-none";
+                    } else {
+                        btn.className = "px-2.5 py-1 rounded-sm text-[10px] font-bold border border-zinc-700 hover:border-zinc-400 text-zinc-400 transition-all select-none";
+                    }
+                }
+            });
         }
 
         // ==========================================
@@ -834,6 +1104,36 @@
                 osc.stop(time + 0.3);
             }
 
+            playWoodBreak() {
+                if (!this.ctx) return;
+                const time = this.ctx.currentTime;
+                // Heavy wood splinter crunch
+                const osc = this.ctx.createOscillator();
+                const gainNode = this.ctx.createGain();
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(140, time);
+                osc.frequency.linearRampToValueAtTime(30, time + 0.4);
+                gainNode.gain.setValueAtTime(0.5, time);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, time + 0.4);
+                osc.connect(gainNode);
+                gainNode.connect(this.masterGain);
+                osc.start(time);
+                osc.stop(time + 0.42);
+
+                // Sharp snap transient
+                const osc2 = this.ctx.createOscillator();
+                const gain2 = this.ctx.createGain();
+                osc2.type = 'triangle';
+                osc2.frequency.setValueAtTime(450, time);
+                osc2.frequency.linearRampToValueAtTime(100, time + 0.15);
+                gain2.gain.setValueAtTime(0.3, time);
+                gain2.gain.exponentialRampToValueAtTime(0.001, time + 0.15);
+                osc2.connect(gain2);
+                gain2.connect(this.masterGain);
+                osc2.start(time);
+                osc2.stop(time + 0.17);
+            }
+
             playGrowl() {
                 if (!this.ctx) return;
                 const time = this.ctx.currentTime;
@@ -1035,6 +1335,143 @@
                 osc.stop(time + 0.7);
                 oscRing.stop(time + 0.7);
             }
+
+            playDrip() {
+                if (!this.ctx) return;
+                const time = this.ctx.currentTime;
+                const osc = this.ctx.createOscillator();
+                const gainNode = this.ctx.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(1400, time);
+                osc.frequency.exponentialRampToValueAtTime(1200, time + 0.08);
+
+                gainNode.gain.setValueAtTime(0.08, time);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, time + 0.08);
+
+                osc.connect(gainNode);
+                gainNode.connect(this.masterGain);
+                osc.start(time);
+                osc.stop(time + 0.09);
+            }
+
+            playWhisper() {
+                if (!this.ctx) return;
+                const time = this.ctx.currentTime;
+                const noise = this.ctx.createBufferSource();
+                const filter = this.ctx.createBiquadFilter();
+                const gainNode = this.ctx.createGain();
+
+                const bufferSize = this.ctx.sampleRate * 1.5;
+                const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+                const data = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    data[i] = Math.random() * 2 - 1;
+                }
+
+                noise.buffer = buffer;
+                filter.type = 'bandpass';
+                filter.frequency.setValueAtTime(800, time);
+                filter.frequency.linearRampToValueAtTime(1100, time + 0.75);
+                filter.frequency.linearRampToValueAtTime(750, time + 1.5);
+                filter.Q.setValueAtTime(4.0, time);
+
+                gainNode.gain.setValueAtTime(0.08, time);
+                gainNode.gain.linearRampToValueAtTime(0.18, time + 0.55);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, time + 1.5);
+
+                noise.connect(filter);
+                filter.connect(gainNode);
+                gainNode.connect(this.masterGain);
+
+                noise.start(time);
+                noise.stop(time + 1.5);
+            }
+
+            playKnock() {
+                if (!this.ctx) return;
+                const time = this.ctx.currentTime;
+                const osc = this.ctx.createOscillator();
+                const gainNode = this.ctx.createGain();
+
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(85, time);
+                osc.frequency.exponentialRampToValueAtTime(30, time + 0.15);
+
+                gainNode.gain.setValueAtTime(0.3, time);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, time + 0.15);
+
+                osc.connect(gainNode);
+                gainNode.connect(this.masterGain);
+                osc.start(time);
+                osc.stop(time + 0.16);
+            }
+
+            playPageFlip() {
+                if (!this.ctx) return;
+                const time = this.ctx.currentTime;
+                const noise = this.ctx.createBufferSource();
+                const filter = this.ctx.createBiquadFilter();
+                const gainNode = this.ctx.createGain();
+
+                const bufferSize = this.ctx.sampleRate * 0.25;
+                const buffer = this.ctx.createBuffer(1, bufferSize, this.ctx.sampleRate);
+                const data = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    data[i] = Math.random() * 2 - 1;
+                }
+
+                noise.buffer = buffer;
+                filter.type = 'bandpass';
+                filter.frequency.setValueAtTime(1000, time);
+                filter.frequency.exponentialRampToValueAtTime(300, time + 0.25);
+                filter.Q.setValueAtTime(1.5, time);
+
+                gainNode.gain.setValueAtTime(0.25, time);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, time + 0.25);
+
+                noise.connect(filter);
+                filter.connect(gainNode);
+                gainNode.connect(this.masterGain);
+
+                noise.start(time);
+                noise.stop(time + 0.26);
+            }
+
+            playGeneratorStart() {
+                if (!this.ctx) return;
+                const time = this.ctx.currentTime;
+                const osc = this.ctx.createOscillator();
+                const gainNode = this.ctx.createGain();
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(35, time);
+                osc.frequency.linearRampToValueAtTime(75, time + 2.5);
+
+                gainNode.gain.setValueAtTime(0.1, time);
+                gainNode.gain.linearRampToValueAtTime(0.55, time + 1.2);
+                
+                osc.connect(gainNode);
+                gainNode.connect(this.masterGain);
+                osc.start(time);
+                
+                const oscMetal = this.ctx.createOscillator();
+                const gainMetal = this.ctx.createGain();
+                oscMetal.type = 'square';
+                oscMetal.frequency.setValueAtTime(180, time);
+                for (let i = 0.1; i < 2.5; i += 0.15) {
+                    oscMetal.frequency.setValueAtTime(180 + Math.sin(i * 10) * 40, time + i);
+                }
+                
+                gainMetal.gain.setValueAtTime(0.2, time);
+                gainMetal.gain.exponentialRampToValueAtTime(0.001, time + 2.5);
+                
+                oscMetal.connect(gainMetal);
+                gainMetal.connect(this.masterGain);
+                oscMetal.start(time);
+                oscMetal.stop(time + 2.5);
+                
+                osc.stop(time + 4.5);
+            }
         }
 
         const audio = new AudioSynth();
@@ -1134,6 +1571,54 @@
         let batteries = [];          // 2 battery items array
         let exitTriggerBox = null;   // Bounding box for exit room
         let isExitUnlocked = false;
+        let crowbarItem = null;      // Crowbar collectible { mesh, light, collected, box }
+        let woodenBarricade = null;  // Wooden barricade blocking exit stairs { mesh, cleared, box }
+        let hasCrowbar = false;      // Player has crowbar flag
+        let powerGenerator = { mesh: null, box: null, light: null, bulbMesh: null, leverMesh: null };
+        let storyNotes = [];         // Hidden story journal pages array
+        const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+        // ==========================================
+        // MULTIPLAYER STATE VARIABLES
+        // ==========================================
+        let socket = null;
+        let myId = null;
+        let isHost = true;
+        let remotePlayers = new Map();
+        let currentHoldingItem = 'flashlight';
+        let syncedMonsterData = null;
+        let lobbySeed = 123456;
+        let useSeededRandom = false;
+
+        function seededRandom() {
+            let t = lobbySeed += 0x6D2B79F5;
+            t = Math.imul(t ^ (t >>> 15), t | 1);
+            t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+            return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        }
+
+        const originalRandom = Math.random;
+        function enableSeededRandom(seed) {
+            lobbySeed = seed;
+            Math.random = seededRandom;
+            useSeededRandom = true;
+        }
+        function disableSeededRandom() {
+            Math.random = originalRandom;
+            useSeededRandom = false;
+        }
+
+        // Mobile touch swipe camera control variables
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touchSensitivity = 0.0028;
+        let touchCamId = null;
+
+        // Mobile virtual joystick variables
+        let joystickActive = false;
+        let joystickTouchId = null;
+        let joystickX = 0; // normalized horizontal input (-1 to 1)
+        let joystickY = 0; // normalized vertical input (-1 to 1)
 
         // Lighting
         let ambientLight, flashlight, flashlightTarget;
@@ -1208,6 +1693,7 @@
             scene.fog = new THREE.FogExp2(0x020202, 0.16); // Thicker fog for tension
 
             camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 40);
+            camera.rotation.order = 'YXZ'; // Essential for touch swipe camera rotation!
             camera.position.set(2, 1.6, 2);
 
             const canvas = document.getElementById('game-canvas');
@@ -1238,7 +1724,9 @@
             flashlight.target = flashlightTarget;
 
             // Generate map
+            enableSeededRandom(lobbySeed);
             generateBasement();
+            disableSeededRandom();
 
             // Setup pointer lock callbacks
             controls.addEventListener('lock', () => {
@@ -1422,11 +1910,13 @@
                         dummy.updateMatrix();
                         floorInstanced.setMatrixAt(floorCount++, dummy.matrix);
 
-                        // Ceiling Plane
-                        dummy.position.set(px, WALL_HEIGHT, pz);
-                        dummy.rotation.x = Math.PI / 2;
-                        dummy.updateMatrix();
-                        ceilInstanced.setMatrixAt(ceilCount++, dummy.matrix);
+                        // Ceiling Plane (Skip at exit cell so stairs can go up high!)
+                        if (!(x === GRID_SIZE - 2 && y === GRID_SIZE - 2)) {
+                            dummy.position.set(px, WALL_HEIGHT, pz);
+                            dummy.rotation.x = Math.PI / 2;
+                            dummy.updateMatrix();
+                            ceilInstanced.setMatrixAt(ceilCount++, dummy.matrix);
+                        }
 
                         // Support Beams and pipes occasionally
                         if (Math.random() < 0.08 && mapGrid[x][y] === 0) {
@@ -1478,6 +1968,7 @@
             spawnBoilers(boilerX * CELL_SIZE, boilerY * CELL_SIZE);
             spawnWaterPuddles();
             spawnShelves();
+            spawnStoryNotes();
             createPlayerBody();
         }
 
@@ -1632,6 +2123,63 @@
             const p2 = new THREE.Mesh(pipeGeo, pipeMat);
             p2.position.set(cx + 0.6, 2.2 + 0.4, cz + 0.6);
             scene.add(p2);
+
+            // Power Generator Console
+            const genGroup = new THREE.Group();
+            genGroup.position.set(cx, 0, cz - 1.5);
+            
+            // Main body
+            const bodyGeo = new THREE.BoxGeometry(0.7, 1.1, 0.5);
+            const bodyMat = new THREE.MeshStandardMaterial({ color: 0x2e3532, metalness: 0.8, roughness: 0.4 });
+            const body = new THREE.Mesh(bodyGeo, bodyMat);
+            body.position.set(0, 0.55, 0);
+            body.castShadow = true;
+            body.receiveShadow = true;
+            genGroup.add(body);
+
+            // Yellow lever arm base
+            const leverBaseGeo = new THREE.CylinderGeometry(0.06, 0.06, 0.1, 5);
+            const leverBaseMat = new THREE.MeshStandardMaterial({ color: 0x111111, metalness: 0.9 });
+            const leverBase = new THREE.Mesh(leverBaseGeo, leverBaseMat);
+            leverBase.position.set(0, 0.7, 0.26);
+            leverBase.rotation.x = Math.PI / 2;
+            genGroup.add(leverBase);
+
+            // Yellow lever handle
+            const leverHandleGeo = new THREE.CylinderGeometry(0.015, 0.015, 0.35, 5);
+            const leverHandleMat = new THREE.MeshStandardMaterial({ color: 0xe0ad1b, metalness: 0.7, roughness: 0.3 });
+            const leverHandle = new THREE.Mesh(leverHandleGeo, leverHandleMat);
+            leverHandle.position.set(0, 0.1, 0);
+            
+            const leverPivotGroup = new THREE.Group();
+            leverPivotGroup.position.set(0, 0.7, 0.28);
+            leverPivotGroup.rotation.x = -0.65; // pointing UP originally (deactivated state)
+            leverHandle.position.y = 0.15;
+            leverPivotGroup.add(leverHandle);
+            genGroup.add(leverPivotGroup);
+            powerGenerator.leverMesh = leverPivotGroup;
+
+            // Indicator bulb
+            const genBulbGeo = new THREE.SphereGeometry(0.05, 4, 4);
+            const genBulbMat = new THREE.MeshBasicMaterial({ color: 0xdc2626 }); // Red for off
+            const genBulb = new THREE.Mesh(genBulbGeo, genBulbMat);
+            genBulb.position.set(0, 1.15, 0);
+            genGroup.add(genBulb);
+            powerGenerator.bulbMesh = genBulb;
+
+            // Light above generator
+            const genLight = new THREE.PointLight(0xdc2626, 1.5, 4, 1.5);
+            genLight.position.set(cx, 1.25, cz - 1.5);
+            scene.add(genLight);
+            powerGenerator.light = genLight;
+
+            scene.add(genGroup);
+            powerGenerator.mesh = genGroup;
+
+            // Interaction bounding box
+            powerGenerator.box = new THREE.Box3().setFromObject(body);
+            powerGenerator.box.min.subScalar(0.4);
+            powerGenerator.box.max.addScalar(0.4);
         }
 
         function spawnWaterPuddles() {
@@ -1718,70 +2266,242 @@
             }
         }
 
-        function createPlayerBody() {
-            playerBodyGroup = new THREE.Group();
+        function spawnStoryNotes() {
+            storyNotes.forEach(n => {
+                if (n.mesh) scene.remove(n.mesh);
+                if (n.light) scene.remove(n.light);
+            });
+            storyNotes = [];
+
+            const noteTexts = [
+                "Entry 41: The pipes keep leaking... and that hum from the generator room is driving me mad. I swear I saw someone standing at the end of the corridor, but when I flashed my light, there was only dust. I need to get out.",
+                "Entry 43: It's here. It moves only when I'm not looking at it. I can hear its heavy steps dragging behind me. It watches from the doorways, peeking... If you see it, DO NOT TURN YOUR BACK. Stare it down, then run.",
+                "Entry 45: The emergency exit door is magnetically locked. Even with all three security keys, the door won't budge unless the main power generator in the central boiler room is turned back ON. Don't make the mistake of running to the door first like Carl did...",
+                "Entry 48: My flashlight is dying... there's a safe room near the entrance. The green light bulb above it means the stalker won't enter. It's too afraid of the light frequency or something. I'll hide there... if I can make it."
+            ];
+
+            const noteGeo = new THREE.BoxGeometry(0.2, 0.01, 0.26);
+            const noteMat = new THREE.MeshStandardMaterial({
+                color: 0xe8d6b0,
+                roughness: 0.9,
+                metalness: 0.1
+            });
+
+            let placedCount = 0;
+            for (let attempts = 0; attempts < 150 && placedCount < 4; attempts++) {
+                const rx = Math.floor(Math.random() * (GRID_SIZE - 2)) + 1;
+                const rz = Math.floor(Math.random() * (GRID_SIZE - 2)) + 1;
+
+                const isStart = (rx <= 2 && rz <= 2);
+                const isExit = (rx === GRID_SIZE - 2 && rz === GRID_SIZE - 2);
+                const isBoiler = (Math.abs(rx - Math.floor(GRID_SIZE / 2)) <= 1 && Math.abs(rz - Math.floor(GRID_SIZE / 2)) <= 1);
+
+                if (mapGrid[rx][rz] === 0 && !isStart && !isExit && !isBoiler) {
+                    let tooClose = false;
+                    const cx = rx * CELL_SIZE + (Math.random() - 0.5) * 1.5;
+                    const cz = rz * CELL_SIZE + (Math.random() - 0.5) * 1.5;
+
+                    for (const n of storyNotes) {
+                        const dist = Math.hypot(n.mesh.position.x - cx, n.mesh.position.z - cz);
+                        if (dist < 6.0) {
+                            tooClose = true;
+                            break;
+                        }
+                    }
+
+                    if (!tooClose) {
+                        const noteMesh = new THREE.Mesh(noteGeo, noteMat);
+                        noteMesh.position.set(cx, 0.02, cz);
+                        noteMesh.rotation.y = Math.random() * Math.PI;
+                        noteMesh.castShadow = true;
+                        noteMesh.receiveShadow = true;
+                        scene.add(noteMesh);
+
+                        const noteLight = new THREE.PointLight(0xffaa44, 0.6, 2.0, 1.5);
+                        noteLight.position.set(cx, 0.15, cz);
+                        scene.add(noteLight);
+
+                        const box = new THREE.Box3().setFromObject(noteMesh);
+                        box.min.subScalar(0.4);
+                        box.max.addScalar(0.4);
+
+                        storyNotes.push({
+                            mesh: noteMesh,
+                            light: noteLight,
+                            text: noteTexts[placedCount],
+                            collected: false,
+                            box: box,
+                            index: placedCount
+                        });
+
+                        placedCount++;
+                    }
+                }
+            }
+        }
+
+        function createCharacterModel() {
+            const group = new THREE.Group();
 
             const skinMat = new THREE.MeshStandardMaterial({
                 color: 0xdfb096, // low-poly peach skin tone
                 roughness: 0.8,
                 metalness: 0.1
             });
+            const hairMat = new THREE.MeshStandardMaterial({
+                color: 0x422f27, // spiky brown hair
+                roughness: 0.8,
+                metalness: 0.1
+            });
+            const eyeMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+            const pupilMat = new THREE.MeshBasicMaterial({ color: 0x000000 });
+            const browMat = new THREE.MeshBasicMaterial({ color: 0x111111 });
+            const censorMat = new THREE.MeshBasicMaterial({ color: 0x000000 });
 
-            // Torso
-            const torsoGeo = new THREE.BoxGeometry(0.48, 0.75, 0.25);
+            // Torso (slender, cartoonish)
+            const torsoGeo = new THREE.BoxGeometry(0.32, 0.75, 0.22);
             const torso = new THREE.Mesh(torsoGeo, skinMat);
             torso.position.y = 1.05;
             torso.castShadow = true;
             torso.receiveShadow = true;
-            playerBodyGroup.add(torso);
+            group.add(torso);
 
-            // Head
-            const headGeo = new THREE.BoxGeometry(0.24, 0.24, 0.24);
+            // Neck
+            const neckGeo = new THREE.CylinderGeometry(0.06, 0.07, 0.12, 6);
+            const neck = new THREE.Mesh(neckGeo, skinMat);
+            neck.position.y = 1.44;
+            group.add(neck);
+
+            // Head (expressive cartoon head)
+            const headGeo = new THREE.BoxGeometry(0.28, 0.32, 0.28);
             const head = new THREE.Mesh(headGeo, skinMat);
-            head.position.y = 1.5;
+            head.position.y = 1.63;
             head.castShadow = true;
-            playerBodyGroup.add(head);
+            group.add(head);
 
-            // Left leg
-            const legGeo = new THREE.BoxGeometry(0.16, 0.65, 0.16);
-            const leftLeg = new THREE.Mesh(legGeo, skinMat);
-            leftLeg.position.set(-0.14, 0.4, 0);
-            leftLeg.castShadow = true;
-            leftLeg.receiveShadow = true;
-            playerBodyGroup.add(leftLeg);
+            // Hair spikes! (Multiple spiky boxes or pyramids clustered on top and back of the head)
+            const hairTopGeo = new THREE.BoxGeometry(0.30, 0.1, 0.30);
+            const hairTop = new THREE.Mesh(hairTopGeo, hairMat);
+            hairTop.position.set(0, 0.16, 0);
+            head.add(hairTop);
 
-            // Right leg
-            const rightLeg = new THREE.Mesh(legGeo, skinMat);
-            rightLeg.position.set(0.14, 0.4, 0);
-            rightLeg.castShadow = true;
-            rightLeg.receiveShadow = true;
-            playerBodyGroup.add(rightLeg);
-
-            // Left arm
-            const armGeo = new THREE.BoxGeometry(0.13, 0.65, 0.13);
-            const leftArm = new THREE.Mesh(armGeo, skinMat);
-            leftArm.position.set(-0.33, 1.1, 0);
-            leftArm.castShadow = true;
-            playerBodyGroup.add(leftArm);
-
-            // Right arm
-            const rightArm = new THREE.Mesh(armGeo, skinMat);
-            rightArm.position.set(0.33, 1.1, 0);
-            rightArm.castShadow = true;
-            playerBodyGroup.add(rightArm);
-
-            // Black square censor paper block at the pelvis/groin level
-            const censorGeo = new THREE.BoxGeometry(0.38, 0.38, 0.28);
-            const censorMat = new THREE.MeshBasicMaterial({ 
-                color: 0x000000,
-                transparent: false
+            // Spikes (using Box/Cone shapes with rotations to match the front hair tufts)
+            const spikeCoords = [
+                { s: [0.08, 0.12, 0.12], p: [0.08, 0.18, 0.1], r: [0.4, 0, -0.2] }, // Front right spike
+                { s: [-0.08, 0.15, 0.12], p: [-0.08, 0.19, 0.12], r: [0.5, 0, 0.2] }, // Front left spike
+                { s: [0, 0.14, 0.15], p: [0, 0.2, 0.08], r: [0.3, 0.1, 0] }, // Mid front tuft
+                { s: [0.1, 0.1, 0.12], p: [0.12, 0.1, -0.08], r: [0, 0, -0.3] }, // Side right hair
+                { s: [-0.1, 0.1, 0.12], p: [-0.12, 0.1, -0.08], r: [0, 0, 0.3] }, // Side left hair
+                { s: [0.06, 0.12, 0.08], p: [0.05, 0.22, -0.05], r: [-0.2, 0, 0] }, // Top back spike
+                { s: [-0.06, 0.12, 0.08], p: [-0.05, 0.22, -0.05], r: [-0.2, 0, 0] } // Top back spike L
+            ];
+            spikeCoords.forEach(sc => {
+                const sp = new THREE.Mesh(new THREE.BoxGeometry(sc.s[0], sc.s[1], sc.s[2]), hairMat);
+                sp.position.set(sc.p[0], sc.p[1], sc.p[2]);
+                sp.rotation.set(sc.r[0], sc.r[1], sc.r[2]);
+                head.add(sp);
             });
-            const censor = new THREE.Mesh(censorGeo, censorMat);
-            // Centered right in the middle lower torso/groin area
-            censor.position.set(0, 0.68, 0.08); 
-            playerBodyGroup.add(censor);
 
-            // Hide initially, we only show it during the replay!
+            // Big cartoon eyes
+            const eyeGeo = new THREE.BoxGeometry(0.08, 0.09, 0.03);
+            const pupilGeo = new THREE.BoxGeometry(0.03, 0.03, 0.01);
+
+            const leftEye = new THREE.Mesh(eyeGeo, eyeMat);
+            leftEye.position.set(-0.06, 0.04, 0.14);
+            head.add(leftEye);
+
+            const leftPupil = new THREE.Mesh(pupilGeo, pupilMat);
+            leftPupil.position.set(-0.06, 0.03, 0.155);
+            head.add(leftPupil);
+
+            const rightEye = new THREE.Mesh(eyeGeo, eyeMat);
+            rightEye.position.set(0.06, 0.04, 0.14);
+            head.add(rightEye);
+
+            const rightPupil = new THREE.Mesh(pupilGeo, pupilMat);
+            rightPupil.position.set(0.06, 0.03, 0.155);
+            head.add(rightPupil);
+
+            // Thick expressive cartoon eyebrows
+            const browGeo = new THREE.BoxGeometry(0.1, 0.03, 0.02);
+            
+            const leftBrow = new THREE.Mesh(browGeo, browMat);
+            leftBrow.position.set(-0.06, 0.11, 0.145);
+            leftBrow.rotation.z = 0.1; // Menacing/curious tilt
+            head.add(leftBrow);
+
+            const rightBrow = new THREE.Mesh(browGeo, browMat);
+            rightBrow.position.set(0.06, 0.11, 0.145);
+            rightBrow.rotation.z = -0.1;
+            head.add(rightBrow);
+
+            // Ears
+            const earGeo = new THREE.BoxGeometry(0.05, 0.09, 0.05);
+            const leftEar = new THREE.Mesh(earGeo, skinMat);
+            leftEar.position.set(-0.15, 0.02, -0.02);
+            leftEar.rotation.y = 0.15;
+            leftEar.rotation.z = 0.1;
+            head.add(leftEar);
+
+            const rightEar = leftEar.clone();
+            rightEar.position.x = 0.15;
+            rightEar.rotation.y = -0.15;
+            rightEar.rotation.z = -0.1;
+            head.add(rightEar);
+
+            // Nose (long cartoon nose from image)
+            const noseGeo = new THREE.BoxGeometry(0.04, 0.08, 0.07);
+            const nose = new THREE.Mesh(noseGeo, skinMat);
+            nose.position.set(0, -0.01, 0.15);
+            head.add(nose);
+
+            // Skinny cartoon arms
+            const armGeo = new THREE.BoxGeometry(0.08, 0.65, 0.08);
+            
+            const leftArm = new THREE.Mesh(armGeo, skinMat);
+            leftArm.position.set(-0.21, 1.1, 0);
+            leftArm.castShadow = true;
+            group.add(leftArm);
+
+            const rightArm = new THREE.Mesh(armGeo, skinMat);
+            rightArm.position.set(0.21, 1.1, 0);
+            rightArm.castShadow = true;
+            group.add(rightArm);
+
+            // Skinny cartoon legs
+            const legGeo = new THREE.BoxGeometry(0.10, 0.68, 0.10);
+
+            const leftLeg = new THREE.Mesh(legGeo, skinMat);
+            leftLeg.position.set(-0.1, 0.34, 0);
+            leftLeg.castShadow = true;
+            group.add(leftLeg);
+
+            const rightLeg = new THREE.Mesh(legGeo, skinMat);
+            rightLeg.position.set(0.1, 0.34, 0);
+            rightLeg.castShadow = true;
+            group.add(rightLeg);
+
+            // Censor Box (Perfect black rectangle covering the groin as in the image!)
+            const censorGeo = new THREE.BoxGeometry(0.24, 0.34, 0.16);
+            const censor = new THREE.Mesh(censorGeo, censorMat);
+            censor.position.set(0, 0.68, 0.04);
+            group.add(censor);
+
+            // Keep references for animations
+            group.parts = {
+                head,
+                leftArm,
+                rightArm,
+                leftLeg,
+                rightLeg,
+                censor
+            };
+
+            return group;
+        }
+
+        function createPlayerBody() {
+            playerBodyGroup = createCharacterModel();
             playerBodyGroup.visible = false;
             scene.add(playerBodyGroup);
         }
@@ -1794,18 +2514,18 @@
             const ex = exitX * CELL_SIZE;
             const ez = exitY * CELL_SIZE;
 
-            // Create stairs leading up to the exit door!
-            const stepCount = 8;
-            const totalStairsHeight = 1.35;
-            const stairsXStart = ex - 1.8;
+            // Create stairs leading up to the exit door! Going up high!
+            const stepCount = 18;
+            const totalStairsHeight = 4.5;
+            const stairsXStart = ex - 3.5;
             const stairsXEnd = ex + 0.8;
             const stairsWidth = 2.4; // along Z axis
             
             // Materials for the concrete stairs and landing
             const stairsMat = new THREE.MeshStandardMaterial({ 
-                color: 0x221f1d, 
+                color: 0x1d1b1a, 
                 roughness: 0.95,
-                metalness: 0.1
+                metalness: 0.15
             });
 
             for (let i = 0; i < stepCount; i++) {
@@ -1813,11 +2533,9 @@
                 const progress = (i + 1) / stepCount;
                 
                 // Position of this step
-                const sx = stairsXStart + (progress * 2.6);
+                const sx = stairsXStart + (progress * 4.3);
                 const sy = (i * stepHeight) + (stepHeight / 2);
                 
-                // Box geometry for this step
-                // The step extends from sx backwards to stairsXEnd
                 const stepGeo = new THREE.BoxGeometry(stairsXEnd - sx, stepHeight, stairsWidth);
                 const stepMesh = new THREE.Mesh(stepGeo, stairsMat);
                 stepMesh.position.set(sx + (stairsXEnd - sx) / 2, sy, ez);
@@ -1834,6 +2552,14 @@
             landingMesh.castShadow = true;
             landingMesh.receiveShadow = true;
             scene.add(landingMesh);
+
+            // Shaft of warm daylight/moonlight shining down from the exit
+            const escapeLight = new THREE.SpotLight(0xfff5ea, 12, 14, Math.PI / 4, 0.45, 1.0);
+            escapeLight.position.set(ex + 0.8, totalStairsHeight + 3.0, ez);
+            escapeLight.target.position.set(ex - 2.5, 0.5, ez);
+            escapeLight.castShadow = true;
+            scene.add(escapeLight);
+            scene.add(escapeLight.target);
 
             // Visual Exit door Frame (placed on top of stairs landing!)
             const doorFrameGeo = new THREE.BoxGeometry(0.2, 2.2, 1.4); // Thin along X, wide along Z
@@ -1862,6 +2588,38 @@
             warningMesh.rotation.y = -Math.PI / 2; // Face towards the stairs (-X direction)
             warningMesh.position.set(ex + 0.75, totalStairsHeight + 1.3, ez);
             scene.add(warningMesh);
+
+            // Spawn Wooden Barricade on the stairs
+            woodenBarricade = {
+                mesh: new THREE.Group(),
+                cleared: false,
+                box: new THREE.Box3(
+                    new THREE.Vector3(ex - 1.6, 0, ez - 1.2),
+                    new THREE.Vector3(ex - 1.2, 3.5, ez + 1.2)
+                )
+            };
+
+            const plankMat = new THREE.MeshStandardMaterial({ 
+                color: 0x4a3525, 
+                roughness: 0.9,
+                metalness: 0.1 
+            });
+
+            // 4 crossing wooden boards
+            const plankGeo = new THREE.BoxGeometry(0.12, 0.24, 2.5);
+            for (let i = 0; i < 4; i++) {
+                const plank = new THREE.Mesh(plankGeo, plankMat);
+                // Placed mid-stairway where elevation is about 2.1m
+                plank.position.set(ex - 1.4, 1.4 + i * 0.45, ez);
+                plank.rotation.x = (i % 2 === 0) ? 0.18 : -0.18;
+                plank.rotation.y = (Math.random() - 0.5) * 0.08;
+                plank.rotation.z = (Math.random() - 0.5) * 0.08;
+                plank.castShadow = true;
+                plank.receiveShadow = true;
+                woodenBarricade.mesh.add(plank);
+            }
+            scene.add(woodenBarricade.mesh);
+            collidableObjects.push(woodenBarricade.box);
 
             // Generate 3 keys in remote corridor corners
             const keyColorHex = [0xff0000, 0x00ff00, 0x0000ff]; // Distinct colors
@@ -1942,290 +2700,322 @@
                     box: new THREE.Box3(new THREE.Vector3(bx - 0.6, 0, bz - 0.6), new THREE.Vector3(bx + 0.6, 2, bz + 0.6))
                 });
             }
+
+            // Spawn rust-colored Metal Crowbar
+            const cbSlot = keySlots[6] || keySlots[1];
+            const cbx = cbSlot.x * CELL_SIZE;
+            const cbz = cbSlot.y * CELL_SIZE;
+
+            const crowbarMat = new THREE.MeshStandardMaterial({ 
+                color: 0x9c3131, // Stylized iron rust red
+                metalness: 0.9, 
+                roughness: 0.28,
+                emissive: 0x3d0c0c,
+                emissiveIntensity: 0.25
+            });
+
+            const crowbarGroup = new THREE.Group();
+            
+            // Core long shaft
+            const cbShaftGeo = new THREE.CylinderGeometry(0.024, 0.024, 0.72, 8);
+            const cbShaft = new THREE.Mesh(cbShaftGeo, crowbarMat);
+            cbShaft.position.y = 0.36;
+            crowbarGroup.add(cbShaft);
+
+            // Hook curve
+            const cbHookGeo = new THREE.TorusGeometry(0.08, 0.024, 8, 16, Math.PI * 1.2);
+            const cbHook = new THREE.Mesh(cbHookGeo, crowbarMat);
+            cbHook.position.set(-0.06, 0.72, 0);
+            cbHook.rotation.z = -Math.PI / 4;
+            crowbarGroup.add(cbHook);
+
+            // Split pry-tip
+            const cbTipGeo = new THREE.ConeGeometry(0.034, 0.1, 4);
+            const cbTip = new THREE.Mesh(cbTipGeo, crowbarMat);
+            cbTip.position.y = 0;
+            cbTip.rotation.z = Math.PI;
+            crowbarGroup.add(cbTip);
+
+            // Lay it on floor
+            crowbarGroup.rotation.set(Math.PI / 2.2, 0.2, Math.PI / 3);
+            crowbarGroup.position.set(cbx, 0.08, cbz);
+            scene.add(crowbarGroup);
+
+            const cbLight = new THREE.PointLight(0xd97706, 0.5, 1.5);
+            cbLight.position.set(cbx, 0.25, cbz);
+            scene.add(cbLight);
+
+            crowbarItem = {
+                mesh: crowbarGroup,
+                light: cbLight,
+                collected: false,
+                box: new THREE.Box3(new THREE.Vector3(cbx - 0.6, 0, cbz - 0.6), new THREE.Vector3(cbx + 0.6, 2, cbz + 0.6))
+            };
         }
 
         // ==========================================
         // MONSTER AI & PROCEDURAL SHADOW CHASE
         // ==========================================
         function spawnMonster() {
-            // High-precision low-poly shadow stalker
+            // Highly-detailed crawling low-poly spider-demon stalker
             const monsterGroup = new THREE.Group();
             
-            // Materials for creepy PS1 retro look
-            const shadowMat = new THREE.MeshBasicMaterial({ color: 0x050505 }); // Deep matte shadow black
-            const boneMat = new THREE.MeshBasicMaterial({ color: 0x0f0f0f }); // Skeletal charcoal/black
-            const eyeMat = new THREE.MeshBasicMaterial({ color: 0xff0033 }); // Blood red glowing eyes
-            const clawMat = new THREE.MeshBasicMaterial({ color: 0x1a0202 }); // Reddish-black dried blood claw
+            // Materials for the creepy organic PS1 retro look
+            const boneMat = new THREE.MeshStandardMaterial({ 
+                color: 0x828c7c, 
+                roughness: 0.8, 
+                metalness: 0.1 
+            }); // Pale greenish bone/flesh
+            const shellMat = new THREE.MeshStandardMaterial({ 
+                color: 0x1f221d, 
+                roughness: 0.9, 
+                metalness: 0.25 
+            }); // Dark charcoal/greenish chitin armor shell
+            const muscleMat = new THREE.MeshStandardMaterial({ 
+                color: 0x942525, 
+                roughness: 0.65, 
+                metalness: 0.15 
+            }); // Wet blood-red muscle fibers
+            const teethMat = new THREE.MeshStandardMaterial({ 
+                color: 0xe3d9be, 
+                roughness: 0.5 
+            }); // Dirty bone-white fangs
+            const eyeMat = new THREE.MeshBasicMaterial({ 
+                color: 0xffffff 
+            }); // Bright glowing white eye cores
+            const eyeGlowMat = new THREE.MeshBasicMaterial({ 
+                color: 0xee2222 
+            }); // Glowing red outer ring/backplate
 
             // Store parts for animation
             monster.parts = {
                 head: null,
                 jaw: null,
-                spineSegments: [],
-                ribs: [],
-                tentacles: [],
-                leftThigh: null,
-                leftShin: null,
-                rightThigh: null,
-                rightShin: null,
-                leftUpperArm: null,
-                leftForearm: null,
-                rightUpperArm: null,
-                rightForearm: null,
+                torso: null,
+                legs: [],
                 walkCycle: 0
             };
 
-            // 1. HEAD & JAW
+            // 1. TORSO / CENTRAL SKELETAL BODY MASS
+            const torsoGroup = new THREE.Group();
+            torsoGroup.position.y = 0.35; // Crawling close to the ground
+            
+            // Central body core
+            const bodyCore = new THREE.Mesh(new THREE.BoxGeometry(0.38, 0.35, 0.9), shellMat);
+            torsoGroup.add(bodyCore);
+
+            // Back spine spikes/plates
+            for (let i = 0; i < 4; i++) {
+                const spike = new THREE.Mesh(new THREE.ConeGeometry(0.04, 0.25, 4), boneMat);
+                spike.position.set(0, 0.2, 0.3 - i * 0.22);
+                spike.rotation.x = -0.4 - i * 0.15;
+                torsoGroup.add(spike);
+            }
+
+            // Wrapping organic rib plates
+            for (let i = 0; i < 3; i++) {
+                const ribL = new THREE.Mesh(new THREE.BoxGeometry(0.48, 0.1, 0.05), boneMat);
+                ribL.position.set(-0.15, -0.05, 0.2 - i * 0.22);
+                ribL.rotation.z = -0.3;
+                torsoGroup.add(ribL);
+
+                const ribR = ribL.clone();
+                ribR.position.x = 0.15;
+                ribR.rotation.z = 0.3;
+                torsoGroup.add(ribR);
+            }
+
+            // 2. HEAD & UNHINGED FANGED JAW
             const headGroup = new THREE.Group();
-            headGroup.position.y = 2.1; // Tall crawling stalker
+            headGroup.position.set(0, 0.05, 0.48); // Attached to front of torso
 
-            const craniumGeo = new THREE.SphereGeometry(0.32, 6, 6);
-            const cranium = new THREE.Mesh(craniumGeo, shadowMat);
-            headGroup.add(cranium);
+            // Upper skull cranium
+            const skull = new THREE.Mesh(new THREE.BoxGeometry(0.34, 0.28, 0.38), boneMat);
+            headGroup.add(skull);
 
-            // Menacing long hinged jaw
-            const jawGeo = new THREE.BoxGeometry(0.18, 0.1, 0.35);
-            const jaw = new THREE.Mesh(jawGeo, shadowMat);
+            // Dark chitin crown plating on top of skull
+            const crownPlate = new THREE.Mesh(new THREE.BoxGeometry(0.36, 0.1, 0.3), shellMat);
+            crownPlate.position.set(0, 0.12, -0.04);
+            headGroup.add(crownPlate);
+
+            // Gaping unhinged lower jaw
+            const jaw = new THREE.Mesh(new THREE.BoxGeometry(0.24, 0.12, 0.36), boneMat);
             jaw.position.set(0, -0.22, 0.12);
-            jaw.rotation.x = 0.15; // slightly open by default
+            jaw.rotation.x = 0.35; // Open by default
             headGroup.add(jaw);
             monster.parts.jaw = jaw;
 
-            // 6 glowing spider/demonic eyes
-            const eyeGeo = new THREE.BoxGeometry(0.05, 0.04, 0.05);
-            const eyePositions = [
-                [-0.12, 0.05, 0.22],  [0.12, 0.05, 0.22],   // Main front pair
-                [-0.18, -0.02, 0.18], [0.18, -0.02, 0.18], // Lower wider pair
-                [-0.08, 0.12, 0.2],   [0.08, 0.12, 0.2]     // High narrow pair
+            // 12 Savage sharp fangs (6 upper, 6 lower)
+            for (let i = 0; i < 6; i++) {
+                // Upper fangs pointing down
+                const tooth = new THREE.Mesh(new THREE.ConeGeometry(0.016, 0.11, 4), teethMat);
+                tooth.position.set(-0.12 + i * 0.048, -0.15, 0.16);
+                tooth.rotation.x = 0.2;
+                headGroup.add(tooth);
+            }
+            for (let i = 0; i < 6; i++) {
+                // Lower fangs pointing up
+                const tooth = new THREE.Mesh(new THREE.ConeGeometry(0.016, 0.11, 4), teethMat);
+                tooth.position.set(-0.09 + i * 0.036, 0.06, 0.14);
+                tooth.rotation.x = -0.2;
+                jaw.add(tooth);
+            }
+
+            // 6 Demonic glowing eyes arranged in a cluster (as shown in image)
+            const eyeLayouts = [
+                [-0.09, 0.06, 0.195, 0.03], [0.09, 0.06, 0.195, 0.03],   // Top outer pair
+                [-0.05, -0.01, 0.195, 0.035], [0.05, -0.01, 0.195, 0.035], // Mid inner pair
+                [-0.1, -0.08, 0.195, 0.03], [0.1, -0.08, 0.195, 0.03]    // Bottom outer pair
             ];
-            eyePositions.forEach(pos => {
-                const eye = new THREE.Mesh(eyeGeo, eyeMat);
-                eye.position.set(pos[0], pos[1], pos[2]);
-                headGroup.add(eye);
+            eyeLayouts.forEach(layout => {
+                const eyeBackGeo = new THREE.BoxGeometry(layout[3] * 1.8, layout[3] * 1.8, 0.03);
+                const eyeBack = new THREE.Mesh(eyeBackGeo, eyeGlowMat);
+                eyeBack.position.set(layout[0], layout[1], layout[2]);
+                headGroup.add(eyeBack);
+
+                const eyeCoreGeo = new THREE.BoxGeometry(layout[3], layout[3], 0.04);
+                const eyeCore = new THREE.Mesh(eyeCoreGeo, eyeMat);
+                eyeCore.position.set(layout[0], layout[1], layout[2] + 0.01);
+                headGroup.add(eyeCore);
             });
 
-            // Head Horns / Spines
-            const hornGeo = new THREE.ConeGeometry(0.04, 0.4, 4);
-            hornGeo.rotateX(Math.PI / 2.5); // point back-upward
-            const hornL = new THREE.Mesh(hornGeo, shadowMat);
-            hornL.position.set(-0.15, 0.18, -0.1);
-            hornL.rotation.y = -0.2;
-            const hornR = hornL.clone();
-            hornR.position.x = 0.15;
-            hornR.rotation.y = 0.2;
-            headGroup.add(hornL);
-            headGroup.add(hornR);
-
-            monsterGroup.add(headGroup);
-            monster.parts.head = headGroup;
-
-            // Face red point light to throw eerie glow onto adjacent corridors
-            const faceLight = new THREE.PointLight(0xff0000, 1.2, 5);
-            faceLight.position.set(0, -0.1, 0.4);
+            // Red point light to throw scary reflections onto adjacent brick corridors
+            const faceLight = new THREE.PointLight(0xff3333, 1.5, 6);
+            faceLight.position.set(0, -0.1, 0.45);
             headGroup.add(faceLight);
 
-            // 2. SPINE & RIBCAGE (Skeletal / biomechanical style)
-            const torsoGroup = new THREE.Group();
-            
-            // Build the segmented spine
-            const spineCount = 8;
-            for (let i = 0; i < spineCount; i++) {
-                const spineSegmentGeo = new THREE.BoxGeometry(0.12, 0.12, 0.12);
-                const seg = new THREE.Mesh(spineSegmentGeo, boneMat);
-                // Slight curve backward for a hunchback posture
-                const hFactor = i / (spineCount - 1);
-                const yPos = 0.8 + hFactor * 1.1; // Spanned between 0.8 and 1.9
-                const zPos = -Math.sin(hFactor * Math.PI) * 0.18 - 0.05;
-                seg.position.set(0, yPos, zPos);
-                torsoGroup.add(seg);
-                monster.parts.spineSegments.push(seg);
+            torsoGroup.add(headGroup);
+            monster.parts.head = headGroup;
 
-                // Add ribs to the upper/mid spine segments
-                if (i >= 2 && i <= 6) {
-                    const ribWidth = 0.45 + Math.sin((i - 2) / 4 * Math.PI) * 0.15;
-                    const ribLGeo = new THREE.BoxGeometry(ribWidth, 0.04, 0.04);
-                    ribLGeo.translate(-ribWidth/2, 0, 0); // pivot at spine
-                    const ribL = new THREE.Mesh(ribLGeo, shadowMat);
-                    ribL.position.copy(seg.position);
-                    ribL.rotation.set(0.1, 0, -0.25); // angled forward and down
-                    torsoGroup.add(ribL);
+            // 3. 8 HIGH-ARCHING SPINDLY CRAWLING LEGS WITH MEAT STRANDS
+            const zOffsets = [0.35, 0.12, -0.12, -0.35]; // Front to back positioning
+            const thighLength = 1.0;
+            const shinLength = 1.4;
+            const clawLength = 0.35;
 
-                    const ribR = ribL.clone();
-                    ribR.scale.x = -1; // Mirror
-                    ribR.rotation.set(0.1, 0, 0.25);
-                    torsoGroup.add(ribR);
+            for (let i = 0; i < 4; i++) {
+                // --- LEFT LEGS ---
+                const leftLegGroup = new THREE.Group();
+                leftLegGroup.position.set(-0.16, 0, zOffsets[i]);
 
-                    monster.parts.ribs.push(ribL, ribR);
-                }
+                // Thigh
+                const thighGeo = new THREE.CylinderGeometry(0.045, 0.03, thighLength, 4);
+                thighGeo.translate(0, -thighLength / 2, 0); // pivot at top hip
+                const leftThigh = new THREE.Mesh(thighGeo, shellMat);
+                leftLegGroup.add(leftThigh);
+
+                // Add red muscle fibers underneath/inside the thigh
+                const muscleGeo = new THREE.BoxGeometry(0.02, thighLength * 0.9, 0.02);
+                const leftMuscle1 = new THREE.Mesh(muscleGeo, muscleMat);
+                leftMuscle1.position.set(0, -thighLength / 2, -0.04);
+                leftThigh.add(leftMuscle1);
+                const leftMuscle2 = leftMuscle1.clone();
+                leftMuscle2.position.set(0.03, -thighLength / 2, -0.02);
+                leftThigh.add(leftMuscle2);
+
+                // Shin
+                const shinGeo = new THREE.CylinderGeometry(0.03, 0.018, shinLength, 4);
+                shinGeo.translate(0, -shinLength / 2, 0); // pivot at knee joint
+                const leftShin = new THREE.Mesh(shinGeo, shellMat);
+                leftShin.position.set(0, -thighLength, 0);
+                leftThigh.add(leftShin);
+
+                const leftShinMuscle = new THREE.Mesh(new THREE.BoxGeometry(0.015, shinLength * 0.95, 0.015), muscleMat);
+                leftShinMuscle.position.set(0, -shinLength / 2, 0.02);
+                leftShin.add(leftShinMuscle);
+
+                // Claw
+                const clawGeo = new THREE.CylinderGeometry(0.018, 0.004, clawLength, 4);
+                clawGeo.translate(0, -clawLength / 2, 0);
+                const leftClaw = new THREE.Mesh(clawGeo, shellMat);
+                leftClaw.position.set(0, -shinLength, 0);
+                leftShin.add(leftClaw);
+
+                // Apply initial high-arching pose rotations
+                leftThigh.rotation.z = 1.1; // rise up and out
+                leftThigh.rotation.y = (1.5 - i) * 0.25; // fan outward
+                leftShin.rotation.z = -1.8; // point down towards ground
+                leftClaw.rotation.z = 0.4;
+
+                monster.parts.legs.push({
+                    base: leftLegGroup,
+                    thigh: leftThigh,
+                    shin: leftShin,
+                    claw: leftClaw,
+                    side: 'L',
+                    index: i,
+                    baseThighZ: 1.1,
+                    baseThighY: (1.5 - i) * 0.25,
+                    baseShinZ: -1.8,
+                    phaseOffset: [0, Math.PI, Math.PI / 2, 3 * Math.PI / 2][i]
+                });
+                torsoGroup.add(leftLegGroup);
+
+                // --- RIGHT LEGS ---
+                const rightLegGroup = new THREE.Group();
+                rightLegGroup.position.set(0.16, 0, zOffsets[i]);
+
+                // Thigh
+                const rightThigh = new THREE.Mesh(thighGeo, shellMat);
+                rightLegGroup.add(rightThigh);
+
+                // Add red muscle fibers underneath/inside the thigh
+                const rightMuscle1 = new THREE.Mesh(muscleGeo, muscleMat);
+                rightMuscle1.position.set(0, -thighLength / 2, -0.04);
+                rightThigh.add(rightMuscle1);
+                const rightMuscle2 = rightMuscle1.clone();
+                rightMuscle2.position.set(-0.03, -thighLength / 2, -0.02);
+                rightThigh.add(rightMuscle2);
+
+                // Shin
+                const rightShin = new THREE.Mesh(shinGeo, shellMat);
+                rightShin.position.set(0, -thighLength, 0);
+                rightThigh.add(rightShin);
+
+                const rightShinMuscle = new THREE.Mesh(new THREE.BoxGeometry(0.015, shinLength * 0.95, 0.015), muscleMat);
+                rightShinMuscle.position.set(0, -shinLength / 2, 0.02);
+                rightShin.add(rightShinMuscle);
+
+                // Claw
+                const rightClaw = new THREE.Mesh(clawGeo, shellMat);
+                rightClaw.position.set(0, -shinLength, 0);
+                rightShin.add(rightClaw);
+
+                // Apply mirrored high-arching pose rotations
+                rightThigh.rotation.z = -1.1; // rise up and out (mirrored)
+                rightThigh.rotation.y = -(1.5 - i) * 0.25; // fan outward (mirrored)
+                rightShin.rotation.z = 1.8; // point down towards ground (mirrored)
+                rightClaw.rotation.z = -0.4;
+
+                monster.parts.legs.push({
+                    base: rightLegGroup,
+                    thigh: rightThigh,
+                    shin: rightShin,
+                    claw: rightClaw,
+                    side: 'R',
+                    index: i,
+                    baseThighZ: -1.1,
+                    baseThighY: -(1.5 - i) * 0.25,
+                    baseShinZ: 1.8,
+                    phaseOffset: [Math.PI, 0, 3 * Math.PI / 2, Math.PI / 2][i] // staggered gait phases
+                });
+                torsoGroup.add(rightLegGroup);
             }
+
+            monster.parts.torso = torsoGroup;
             monsterGroup.add(torsoGroup);
 
-            // 3. BACK TENTACLES / WRITHING APPENDAGES
-            const tentacleOffsets = [
-                [-0.15, 1.7, -0.15, -0.3, 0.4],
-                [0.15, 1.7, -0.15, 0.3, 0.4],
-                [-0.1, 1.3, -0.2, -0.4, -0.1],
-                [0.1, 1.3, -0.2, 0.4, -0.1]
-            ];
-            tentacleOffsets.forEach((data, index) => {
-                const tentacleBase = new THREE.Group();
-                tentacleBase.position.set(data[0], data[1], data[2]);
-
-                // Segment 1
-                const seg1Geo = new THREE.CylinderGeometry(0.03, 0.02, 0.6, 4);
-                seg1Geo.translate(0, 0.3, 0);
-                const seg1 = new THREE.Mesh(seg1Geo, shadowMat);
-                seg1.rotation.set(0.6, 0, data[3]);
-                tentacleBase.add(seg1);
-
-                // Segment 2
-                const seg2Geo = new THREE.CylinderGeometry(0.02, 0.012, 0.5, 4);
-                seg2Geo.translate(0, 0.25, 0);
-                const seg2 = new THREE.Mesh(seg2Geo, shadowMat);
-                seg2.position.set(0, 0.55, 0);
-                seg2.rotation.x = -0.8;
-                seg1.add(seg2);
-
-                monsterGroup.add(tentacleBase);
-                monster.parts.tentacles.push({ base: tentacleBase, seg1: seg1, seg2: seg2, phase: index * 1.5 });
-            });
-
-            // 4. DIGITIGRADE LEGS (Creepy jointed beast legs)
-            const hipY = 0.8;
-            const legSpread = 0.25;
-
-            // --- LEFT LEG ---
-            const leftLegGroup = new THREE.Group();
-            leftLegGroup.position.set(-legSpread, hipY, 0);
-
-            // Thigh
-            const thighGeo = new THREE.CylinderGeometry(0.07, 0.05, 0.6, 4);
-            thighGeo.translate(0, -0.3, 0);
-            const leftThigh = new THREE.Mesh(thighGeo, shadowMat);
-            leftThigh.rotation.set(0.3, 0, 0.05); // tilt out and forward
-            leftLegGroup.add(leftThigh);
-            monster.parts.leftThigh = leftThigh;
-
-            // Shin / Calf (attached to thigh, tilts back)
-            const shinGeo = new THREE.CylinderGeometry(0.05, 0.03, 0.6, 4);
-            shinGeo.translate(0, -0.3, 0);
-            const leftShin = new THREE.Mesh(shinGeo, shadowMat);
-            leftShin.position.set(0, -0.55, 0);
-            leftShin.rotation.x = -0.6; // bend back at knee
-            leftThigh.add(leftShin);
-            monster.parts.leftShin = leftShin;
-
-            // Foot / Claw
-            const footGeo = new THREE.BoxGeometry(0.08, 0.05, 0.22);
-            footGeo.translate(0, -0.025, 0.05);
-            const leftFoot = new THREE.Mesh(footGeo, shadowMat);
-            leftFoot.position.set(0, -0.55, 0);
-            leftFoot.rotation.x = 0.3; // flatten out
-            leftShin.add(leftFoot);
-
-            monsterGroup.add(leftLegGroup);
-
-            // --- RIGHT LEG ---
-            const rightLegGroup = new THREE.Group();
-            rightLegGroup.position.set(legSpread, hipY, 0);
-
-            // Thigh
-            const rightThigh = new THREE.Mesh(thighGeo, shadowMat);
-            rightThigh.rotation.set(0.3, 0, -0.05);
-            rightLegGroup.add(rightThigh);
-            monster.parts.rightThigh = rightThigh;
-
-            // Shin
-            const rightShin = new THREE.Mesh(shinGeo, shadowMat);
-            rightShin.position.set(0, -0.55, 0);
-            rightShin.rotation.x = -0.6;
-            rightThigh.add(rightShin);
-            monster.parts.rightShin = rightShin;
-
-            // Foot
-            const rightFoot = leftFoot.clone();
-            rightShin.add(rightFoot);
-
-            monsterGroup.add(rightLegGroup);
-
-            // 5. LONG SPINDLY CLAWED ARMS
-            const shoulderY = 1.85;
-            const armSpread = 0.38;
-
-            // --- LEFT ARM ---
-            const leftArmGroup = new THREE.Group();
-            leftArmGroup.position.set(-armSpread, shoulderY, 0);
-
-            // Upper Arm
-            const upperArmGeo = new THREE.CylinderGeometry(0.05, 0.035, 0.8, 4);
-            upperArmGeo.translate(0, -0.4, 0);
-            const leftUpper = new THREE.Mesh(upperArmGeo, shadowMat);
-            leftUpper.rotation.set(0.1, 0, 0.2); // angled out slightly
-            leftArmGroup.add(leftUpper);
-            monster.parts.leftUpperArm = leftUpper;
-
-            // Forearm (bent forward)
-            const forearmGeo = new THREE.CylinderGeometry(0.035, 0.025, 0.7, 4);
-            forearmGeo.translate(0, -0.35, 0);
-            const leftFore = new THREE.Mesh(forearmGeo, shadowMat);
-            leftFore.position.set(0, -0.75, 0);
-            leftFore.rotation.x = -0.5; // bend forward at elbow
-            leftUpper.add(leftFore);
-            monster.parts.leftForearm = leftFore;
-
-            // Finger Claws
-            const clawGeo = new THREE.ConeGeometry(0.015, 0.25, 4);
-            clawGeo.rotateX(Math.PI / 2); // point forward-down
-            const fingerOffsets = [
-                [-0.05, -0.7, 0.02, -0.1],
-                [0, -0.72, 0.04, 0],
-                [0.05, -0.7, 0.02, 0.1]
-            ];
-            fingerOffsets.forEach(fo => {
-                const claw = new THREE.Mesh(clawGeo, clawMat);
-                claw.position.set(fo[0], fo[1], fo[2]);
-                claw.rotation.y = fo[3];
-                leftFore.add(claw);
-            });
-
-            monsterGroup.add(leftArmGroup);
-
-            // --- RIGHT ARM ---
-            const rightArmGroup = new THREE.Group();
-            rightArmGroup.position.set(armSpread, shoulderY, 0);
-
-            // Upper Arm
-            const rightUpper = new THREE.Mesh(upperArmGeo, shadowMat);
-            rightUpper.rotation.set(0.1, 0, -0.2);
-            rightArmGroup.add(rightUpper);
-            monster.parts.rightUpperArm = rightUpper;
-
-            // Forearm
-            const rightFore = new THREE.Mesh(forearmGeo, shadowMat);
-            rightFore.position.set(0, -0.75, 0);
-            rightFore.rotation.x = -0.5;
-            rightUpper.add(rightFore);
-            monster.parts.rightForearm = rightFore;
-
-            // Finger Claws
-            fingerOffsets.forEach(fo => {
-                const claw = new THREE.Mesh(clawGeo, clawMat);
-                claw.position.set(-fo[0], fo[1], fo[2]); // invert x
-                claw.rotation.y = -fo[3];
-                rightFore.add(claw);
-            });
-
-            monsterGroup.add(rightArmGroup);
-
-            // Spawn opposite side of the maze
+            // Spawn on the opposite side of the maze
+            monsterGroup.scale.set(1.4, 1.4, 1.4); // 40% larger monster!
             monster.mesh = monsterGroup;
             monster.pos.set((GRID_SIZE - 3) * CELL_SIZE, 0, (GRID_SIZE - 3) * CELL_SIZE);
             monster.mesh.position.copy(monster.pos);
             scene.add(monsterGroup);
 
-            // Monster PointLight to create ominous shadow behind it
-            const backShadowLight = new THREE.PointLight(0xff0000, 0.08, 4);
-            backShadowLight.position.set(0, 1.5, -0.6);
+            // Back-shadow point light to throw a creepy giant silhouette behind the crawler
+            const backShadowLight = new THREE.PointLight(0xff1111, 1.25, 6); // Scarier, brighter blood-red light
+            backShadowLight.name = "backShadowLight";
+            backShadowLight.position.set(0, 1.6, -0.8);
             monsterGroup.add(backShadowLight);
 
             state.isMonsterActive = true;
@@ -2233,6 +3023,75 @@
 
         function updateMonsterAI(delta) {
             if (!state.isMonsterActive || !monster.mesh) return;
+
+            // Multiplayer Sync: if we are not the host, we don't compute AI; we just read from the synced host updates!
+            if (socket && socket.readyState === WebSocket.OPEN && !isHost) {
+                if (syncedMonsterData) {
+                    monster.pos.set(syncedMonsterData.x, syncedMonsterData.y, syncedMonsterData.z);
+                    monster.mesh.position.copy(monster.pos);
+                    monster.mesh.rotation.y = syncedMonsterData.rotY;
+                    monster.state = syncedMonsterData.state;
+                }
+                
+                // Procedural Locomotive and Jitter Animations (still update walk cycles visually)
+                if (monster.parts) {
+                    const isMoving = monster.state === 'CHASE' || monster.state === 'WANDER' || monster.state === 'INVESTIGATE';
+                    const animSpeed = monster.state === 'CHASE' ? 11.5 : 6.0;
+                    monster.parts.walkCycle += delta * (isMoving ? animSpeed : 1.5);
+                    const cycle = monster.parts.walkCycle;
+
+                    // Torso/Body bobbing & swaying
+                    if (monster.parts.torso) {
+                        if (isMoving) {
+                            monster.parts.torso.position.y = 0.35 + Math.sin(cycle * 2) * 0.04;
+                            monster.parts.torso.rotation.z = Math.sin(cycle) * 0.05;
+                            monster.parts.torso.rotation.y = Math.cos(cycle) * 0.03;
+                        } else {
+                            monster.parts.torso.position.y = 0.35 + Math.sin(performance.now() * 0.0015) * 0.01;
+                            monster.parts.torso.rotation.set(0, 0, 0);
+                        }
+                    }
+                    // Head sway
+                    if (monster.parts.head) {
+                        if (monster.state === 'FREEZE') {
+                            monster.parts.head.rotation.y = (Math.random() - 0.5) * 0.15;
+                            monster.parts.head.rotation.z = (Math.random() - 0.5) * 0.15;
+                            if (monster.parts.jaw) {
+                                monster.parts.jaw.rotation.x = 0.75 + (Math.random() - 0.5) * 0.08;
+                            }
+                        } else {
+                            monster.parts.head.rotation.set(0, 0, 0);
+                            if (isMoving) {
+                                monster.parts.head.rotation.y = Math.cos(cycle) * 0.08;
+                                monster.parts.head.rotation.z = Math.sin(cycle) * 0.04;
+                            }
+                            if (monster.parts.jaw) {
+                                monster.parts.jaw.rotation.x = monster.state === 'CHASE' ? 0.6 : 0.1;
+                            }
+                        }
+                    }
+                    // Legs moving
+                    if (monster.parts.legs) {
+                        monster.parts.legs.forEach(leg => {
+                            const offset = leg.phaseOffset;
+                            const currentPhase = cycle + offset;
+                            if (isMoving) {
+                                const stepHeight = monster.state === 'CHASE' ? 0.14 : 0.08;
+                                const stepLength = monster.state === 'CHASE' ? 0.32 : 0.18;
+                                leg.base.position.y = Math.max(0, Math.sin(currentPhase) * stepHeight);
+                                leg.base.position.z = Math.cos(currentPhase) * stepLength;
+                                leg.thigh.rotation.z = leg.side === 'L' ? -0.45 + Math.sin(currentPhase) * 0.15 : 0.45 - Math.sin(currentPhase) * 0.15;
+                                leg.shin.rotation.z = leg.side === 'L' ? 1.0 + Math.cos(currentPhase) * 0.2 : -1.0 - Math.cos(currentPhase) * 0.2;
+                            } else {
+                                leg.base.position.set(0, 0, 0);
+                                leg.thigh.rotation.z = leg.side === 'L' ? -0.45 : 0.45;
+                                leg.shin.rotation.z = leg.side === 'L' ? 1.0 : -1.0;
+                            }
+                        });
+                    }
+                }
+                return;
+            }
 
             const playerPos = camera.position.clone();
             playerPos.y = 0; // Ground projection
@@ -2308,10 +3167,32 @@
                 }
             }
 
+            // Vector from monster to player
+            const toPlayer = new THREE.Vector3().subVectors(camera.position, monster.pos);
+            toPlayer.y = 0;
+            const distToPlayerY = toPlayer.length();
+            toPlayer.normalize();
+
+            // Direct monster looking direction in horizontal plane
+            const monsterFacing = new THREE.Vector3(Math.sin(monster.mesh.rotation.y), 0, Math.cos(monster.mesh.rotation.y)).normalize();
+            
+            // Dot product representing player position relative to monster's forward facing direction
+            const dot = monsterFacing.dot(toPlayer);
+            
+            // Allow a field of view of about 140 degrees (cos(70) ≈ 0.34)
+            // If player is extremely close (e.g. under 3.5 units), the monster detects them anyway via sound
+            const hasPOV = dot > 0.34 || distToPlayerY < 3.5;
+
+            // Monster only notices direct line of sight if player is in its POV field!
+            const canSeePlayer = hasLOS && hasPOV;
+
             if (isObserved && hasLOS && distToPlayer > 3) {
                 // Freeze while being directly shined/observed to build creepy behavior
                 monster.state = 'FREEZE';
-            } else if (hasLOS && distToPlayer < 15) {
+            } else if (canSeePlayer && distToPlayer < 15) {
+                if (monster.state !== 'CHASE') {
+                    state.wasSpotted = true;
+                }
                 monster.state = 'CHASE';
                 monster.soundInvestigatePos = null;
             } else if (monster.soundInvestigatePos) {
@@ -2327,12 +3208,18 @@
                 const nextZ = monster.pos.z + dir.z * step;
 
                 const checkMonsterCollides = (x, z) => {
-                    const r = 0.42; // Monster collision radius
+                    const r = 0.55; // Monster collision radius (increased for larger scarier monster)
                     const monsterBox = new THREE.Box3(
                         new THREE.Vector3(x - r, 0, z - r),
                         new THREE.Vector3(x + r, 2.5, z + r)
                     );
                     for (const wall of collidableObjects) {
+                        const wallCenterX = (wall.min.x + wall.max.x) * 0.5;
+                        const wallCenterZ = (wall.min.z + wall.max.z) * 0.5;
+                        const dx = x - wallCenterX;
+                        const dz = z - wallCenterZ;
+                        if (dx * dx + dz * dz > 75) continue; // Proximity filter check to eliminate lag
+
                         if (monsterBox.intersectsBox(wall)) {
                             return true;
                         }
@@ -2408,100 +3295,103 @@
             // Procedural Locomotive and Jitter Animations
             if (monster.parts) {
                 const isMoving = monster.state === 'CHASE' || monster.state === 'WANDER' || monster.state === 'INVESTIGATE';
-                const animSpeed = monster.state === 'CHASE' ? 8.5 : 4.5;
+                const animSpeed = monster.state === 'CHASE' ? 11.5 : 6.0; // Fast, creepy scuttling speed
                 monster.parts.walkCycle += delta * (isMoving ? animSpeed : 1.5);
 
                 const cycle = monster.parts.walkCycle;
 
-                // 1. Leg walking animation (digitigrade joint structure)
-                if (monster.parts.leftThigh && monster.parts.rightThigh) {
+                // 1. Torso/Body bobbing & swaying
+                if (monster.parts.torso) {
                     if (isMoving) {
-                        monster.parts.leftThigh.rotation.x = 0.3 + Math.sin(cycle) * 0.45;
-                        monster.parts.rightThigh.rotation.x = 0.3 - Math.sin(cycle) * 0.45;
-                        if (monster.parts.leftShin && monster.parts.rightShin) {
-                            monster.parts.leftShin.rotation.x = -0.6 + Math.cos(cycle) * 0.3;
-                            monster.parts.rightShin.rotation.x = -0.6 - Math.cos(cycle) * 0.3;
-                        }
+                        // Creepy low vertical scuttling bob and side roll
+                        monster.parts.torso.position.y = 0.35 + Math.sin(cycle * 2.0) * 0.04;
+                        monster.parts.torso.rotation.z = Math.sin(cycle) * 0.05; // side roll
+                        monster.parts.torso.rotation.x = Math.cos(cycle) * 0.02; // pitch bob
                     } else {
-                        // Standing idle breathing pose
-                        monster.parts.leftThigh.rotation.x = THREE.MathUtils.lerp(monster.parts.leftThigh.rotation.x, 0.3, 0.1);
-                        monster.parts.rightThigh.rotation.x = THREE.MathUtils.lerp(monster.parts.rightThigh.rotation.x, 0.3, 0.1);
-                        if (monster.parts.leftShin && monster.parts.rightShin) {
-                            monster.parts.leftShin.rotation.x = THREE.MathUtils.lerp(monster.parts.leftShin.rotation.x, -0.6, 0.1);
-                            monster.parts.rightShin.rotation.x = THREE.MathUtils.lerp(monster.parts.rightShin.rotation.x, -0.6, 0.1);
-                        }
+                        // Settle down and breathe slowly
+                        monster.parts.torso.position.y = THREE.MathUtils.lerp(monster.parts.torso.position.y, 0.35 + Math.sin(cycle) * 0.012, 0.1);
+                        monster.parts.torso.rotation.z = THREE.MathUtils.lerp(monster.parts.torso.rotation.z, 0, 0.1);
+                        monster.parts.torso.rotation.x = THREE.MathUtils.lerp(monster.parts.torso.rotation.x, 0, 0.1);
                     }
                 }
 
-                // 2. Arm reaches and swings
-                if (monster.parts.leftUpperArm && monster.parts.rightUpperArm) {
-                    if (monster.state === 'CHASE') {
-                        // Grab / claw reach forward!
-                        monster.parts.leftUpperArm.rotation.set(-1.0, 0, 0.15 + Math.sin(cycle * 1.5) * 0.08);
-                        monster.parts.rightUpperArm.rotation.set(-1.0, 0, -0.15 - Math.sin(cycle * 1.5) * 0.08);
-                        if (monster.parts.leftForearm && monster.parts.rightForearm) {
-                            monster.parts.leftForearm.rotation.set(-0.3, 0, 0);
-                            monster.parts.rightForearm.rotation.set(-0.3, 0, 0);
-                        }
-                    } else {
-                        // Swing slowly matching walking speed or settle to idle breath
-                        const swingL = isMoving ? (0.1 + Math.sin(cycle) * 0.2) : (0.1 + Math.sin(cycle * 0.4) * 0.05);
-                        const swingR = isMoving ? (0.1 - Math.sin(cycle) * 0.2) : (0.1 - Math.sin(cycle * 0.4) * 0.05);
-                        monster.parts.leftUpperArm.rotation.set(swingL, 0, 0.15);
-                        monster.parts.rightUpperArm.rotation.set(swingR, 0, -0.15);
-                        if (monster.parts.leftForearm && monster.parts.rightForearm) {
-                            monster.parts.leftForearm.rotation.set(-0.5 - Math.cos(cycle) * 0.1, 0, 0);
-                            monster.parts.rightForearm.rotation.set(-0.5 + Math.cos(cycle) * 0.1, 0, 0);
-                        }
-                    }
-                }
-
-                // 3. Back tentacles writhing
-                if (monster.parts.tentacles && monster.parts.tentacles.length > 0) {
-                    monster.parts.tentacles.forEach(tent => {
-                        tent.base.rotation.z = Math.sin(cycle * 0.4 + tent.phase) * 0.15;
-                        tent.seg1.rotation.x = 0.6 + Math.cos(cycle * 0.5 + tent.phase) * 0.2;
-                        tent.seg2.rotation.x = -0.8 + Math.sin(cycle * 0.6 + tent.phase) * 0.15;
-                    });
-                }
-
-                // 4. Ribcage heavy breathing scale
-                if (monster.parts.ribs && monster.parts.ribs.length > 0) {
-                    const breatheScale = 1.0 + 0.04 * Math.sin(cycle * 0.3);
-                    monster.parts.ribs.forEach(rib => {
-                        rib.scale.set(breatheScale, breatheScale, breatheScale);
-                    });
-                }
-
-                // 5. Head twitch and unhinged jaw opening
+                // 2. Head sway & unhinged jaw opening
                 if (monster.parts.head) {
                     if (monster.state === 'FREEZE') {
-                        // Seizure-like vibration when pinned by flashlight beam
-                        monster.parts.head.rotation.y = (Math.random() - 0.5) * 0.12;
-                        monster.parts.head.rotation.z = (Math.random() - 0.5) * 0.12;
+                        // Spasmodic, high-frequency shivering when hit by flashlight
+                        monster.parts.head.rotation.y = (Math.random() - 0.5) * 0.15;
+                        monster.parts.head.rotation.z = (Math.random() - 0.5) * 0.15;
                         if (monster.parts.jaw) {
-                            // Scream/Gasp unhinge
-                            monster.parts.jaw.rotation.x = 0.65 + (Math.random() - 0.5) * 0.08;
+                            // Scream/shriek unhinged jaw lock
+                            monster.parts.jaw.rotation.x = 0.75 + (Math.random() - 0.5) * 0.08;
                         }
                     } else {
-                        // Natural head sway & random micro-twitches
-                        monster.parts.head.rotation.y = Math.sin(cycle * 0.2) * 0.05;
-                        monster.parts.head.rotation.z = Math.cos(cycle * 0.15) * 0.02;
-                        if (Math.random() < 0.015) {
-                            // Instant retro jitter
-                            monster.parts.head.rotation.y += (Math.random() - 0.5) * 0.25;
+                        // Organic side-to-side scanning sways and random twitches
+                        monster.parts.head.rotation.y = Math.sin(cycle * 0.3) * 0.08;
+                        monster.parts.head.rotation.z = Math.cos(cycle * 0.2) * 0.04;
+                        if (Math.random() < 0.02) {
+                            monster.parts.head.rotation.y += (Math.random() - 0.5) * 0.18; // instant retro head twitch
                         }
                         if (monster.parts.jaw) {
-                            // Subtle breathing motion
-                            monster.parts.jaw.rotation.x = 0.18 + Math.sin(cycle * 0.4) * 0.06;
+                            // Subtle rhythmic breath-gasping motion
+                            monster.parts.jaw.rotation.x = 0.32 + Math.sin(cycle * 0.6) * 0.05;
                         }
                     }
+                }
+
+                // 3. 8-Legged coordinated scuttling crawl gait
+                if (monster.parts.legs && monster.parts.legs.length > 0) {
+                    monster.parts.legs.forEach(leg => {
+                        const legCycle = cycle + leg.phaseOffset;
+                        
+                        if (isMoving) {
+                            // Forward/back stride swing
+                            const swingX = Math.sin(legCycle) * 0.45;
+                            leg.thigh.rotation.x = swingX;
+                            leg.thigh.rotation.y = leg.baseThighY + Math.cos(legCycle) * 0.12;
+
+                            // High-arching lift and step down
+                            const liftZ = Math.max(0, Math.cos(legCycle)) * 0.32;
+
+                            if (leg.side === 'L') {
+                                leg.thigh.rotation.z = leg.baseThighZ + liftZ;
+                                // Shin knee flexes and extends dynamically to plant firmly on ground
+                                leg.shin.rotation.z = leg.baseShinZ - Math.sin(legCycle) * 0.28;
+                            } else {
+                                leg.thigh.rotation.z = leg.baseThighZ - liftZ;
+                                leg.shin.rotation.z = leg.baseShinZ + Math.sin(legCycle) * 0.28;
+                            }
+                        } else {
+                            // Gentle standing idle sway / breathing
+                            leg.thigh.rotation.x = THREE.MathUtils.lerp(leg.thigh.rotation.x, 0, 0.1);
+                            leg.thigh.rotation.y = THREE.MathUtils.lerp(leg.thigh.rotation.y, leg.baseThighY, 0.1);
+                            if (leg.side === 'L') {
+                                leg.thigh.rotation.z = THREE.MathUtils.lerp(leg.thigh.rotation.z, leg.baseThighZ + Math.sin(cycle) * 0.015, 0.1);
+                                leg.shin.rotation.z = THREE.MathUtils.lerp(leg.shin.rotation.z, leg.baseShinZ, 0.1);
+                            } else {
+                                leg.thigh.rotation.z = THREE.MathUtils.lerp(leg.thigh.rotation.z, leg.baseThighZ - Math.sin(cycle) * 0.015, 0.1);
+                                leg.shin.rotation.z = THREE.MathUtils.lerp(leg.shin.rotation.z, leg.baseShinZ, 0.1);
+                            }
+                        }
+                    });
                 }
             }
 
             // Teleport occasionally if far away and not visible
             if (distToPlayer > 18 && !hasLOS && Math.random() < 0.001) {
                 teleportStalkerCloser();
+            }
+
+            // Sync monster state over WebSocket (Host only)
+            if (socket && socket.readyState === WebSocket.OPEN && isHost) {
+                socket.send(JSON.stringify({
+                    type: 'monster_sync',
+                    x: monster.pos.x,
+                    y: monster.pos.y,
+                    z: monster.pos.z,
+                    rotY: monster.mesh.rotation.y,
+                    state: monster.state
+                }));
             }
         }
 
@@ -2746,7 +3636,12 @@
             
             // Speed adjustments
             let currentSpeed = PLAYER_SPEED;
-            if (isSprinting && state.batteryLevel > 0) currentSpeed *= SPRINT_MULTIPLIER;
+            if (isSprinting && state.batteryLevel > 0) {
+                currentSpeed *= SPRINT_MULTIPLIER;
+                if (moveForward || moveBackward || moveLeft || moveRight) {
+                    state.usedSprint = true;
+                }
+            }
             if (isCrouching) currentSpeed *= CROUCH_MULTIPLIER;
 
             // Deceleration feel (snappier, crisp deceleration response)
@@ -2763,13 +3658,23 @@
             right.crossVectors(forward, camera.up).normalize();
 
             const moveDirection = new THREE.Vector3();
+            let hasInput = moveForward || moveBackward || moveLeft || moveRight;
+
             if (moveForward) moveDirection.add(forward);
             if (moveBackward) moveDirection.sub(forward);
             if (moveRight) moveDirection.add(right);
             if (moveLeft) moveDirection.sub(right);
+
+            if (isTouchDevice && joystickActive) {
+                hasInput = true;
+                // joystickY is negative for dragging up (moving forward), joystickX is positive for dragging right
+                moveDirection.addScaledVector(forward, -joystickY);
+                moveDirection.addScaledVector(right, joystickX);
+            }
+
             moveDirection.normalize();
 
-            if (moveForward || moveBackward || moveLeft || moveRight) {
+            if (hasInput) {
                 // Accelerate snappy in camera-relative horizontal direction
                 velocity.x += moveDirection.x * currentSpeed * 16.0 * delta;
                 velocity.z += moveDirection.z * currentSpeed * 16.0 * delta;
@@ -2787,6 +3692,12 @@
             playerBox.max.set(nextX + r, camera.position.y + 0.2, camera.position.z + r);
             let collisionX = false;
             for (const wall of collidableObjects) {
+                const wallCenterX = (wall.min.x + wall.max.x) * 0.5;
+                const wallCenterZ = (wall.min.z + wall.max.z) * 0.5;
+                const dx = nextX - wallCenterX;
+                const dz = camera.position.z - wallCenterZ;
+                if (dx * dx + dz * dz > 75) continue; // Proximity short circuit
+
                 if (playerBox.intersectsBox(wall)) {
                     collisionX = true;
                     break;
@@ -2803,6 +3714,12 @@
             playerBox.max.set(camera.position.x + r, camera.position.y + 0.2, nextZ + r);
             let collisionZ = false;
             for (const wall of collidableObjects) {
+                const wallCenterX = (wall.min.x + wall.max.x) * 0.5;
+                const wallCenterZ = (wall.min.z + wall.max.z) * 0.5;
+                const dx = camera.position.x - wallCenterX;
+                const dz = nextZ - wallCenterZ;
+                if (dx * dx + dz * dz > 75) continue; // Proximity short circuit
+
                 if (playerBox.intersectsBox(wall)) {
                     collisionZ = true;
                     break;
@@ -2816,13 +3733,11 @@
 
             // Calculate dynamic stairs elevation
             let targetElevation = 0;
-            // The exit cell is at (14, 14), which spans x: [54.0, 58.0], z: [54.0, 58.0]
-            const inExitCellX = camera.position.x >= 54.0 && camera.position.x <= 58.0;
-            const inExitCellZ = camera.position.z >= 54.0 && camera.position.z <= 58.0;
-            if (inExitCellX && inExitCellZ) {
-                if (camera.position.x > 54.2) {
-                    const t = Math.min(1.0, (camera.position.x - 54.2) / 3.0);
-                    targetElevation = t * 1.35;
+            // The exit cell is around 56, so the stairs span from x: 52.5 to 56.8
+            if (camera.position.z >= 54.0 && camera.position.z <= 58.0) {
+                if (camera.position.x > 52.5) {
+                    const t = Math.min(1.0, (camera.position.x - 52.5) / 4.3);
+                    targetElevation = t * 4.5;
                 }
             }
             playerElevation += (targetElevation - playerElevation) * 12.0 * delta;
@@ -2860,7 +3775,7 @@
         // PAPER MAP OVERLAY SYSTEM
         // ==========================================
         function togglePaperMap() {
-            if (state.isGameOver || isCaughtWaitingForReplay || isReplayingDeath || !controls.isLocked) return;
+            if (state.isGameOver || isCaughtWaitingForReplay || isReplayingDeath || (!controls.isLocked && !isTouchDevice)) return;
             isMapOpen = !isMapOpen;
             const overlay = document.getElementById('paper-map-overlay');
             if (overlay) {
@@ -2949,18 +3864,31 @@
             ctx.strokeStyle = 'rgba(90, 75, 60, 0.08)';
             ctx.lineWidth = 1;
             for (let i = 0; i <= GRID_SIZE; i++) {
-                // Vertical lines
                 ctx.beginPath();
                 ctx.moveTo(i * cellSize, 0);
                 ctx.lineTo(i * cellSize, height);
                 ctx.stroke();
 
-                // Horizontal lines
                 ctx.beginPath();
                 ctx.moveTo(0, i * cellSize);
                 ctx.lineTo(width, i * cellSize);
                 ctx.stroke();
             }
+
+            // Draw coffee cup smudge/stains for deep retro paper flavor
+            ctx.fillStyle = 'rgba(110, 80, 50, 0.04)';
+            ctx.strokeStyle = 'rgba(110, 80, 50, 0.08)';
+            ctx.lineWidth = 1.2;
+            ctx.beginPath();
+            ctx.arc(width * 0.72, height * 0.28, 45, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(width * 0.72, height * 0.28, 42, 0, Math.PI * 2);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.arc(width * 0.22, height * 0.74, 25, 0, Math.PI * 2);
+            ctx.fill();
 
             // 2. Draw explored cells and their walls
             for (let x = 0; x < GRID_SIZE; x++) {
@@ -2970,34 +3898,28 @@
                         const cz = z * cellSize;
 
                         // Sketch background hatch lines inside the explored corridor
-                        ctx.fillStyle = 'rgba(125, 105, 85, 0.07)';
+                        ctx.fillStyle = 'rgba(125, 105, 85, 0.06)';
                         ctx.fillRect(cx + 1, cz + 1, cellSize - 2, cellSize - 2);
 
-                        ctx.strokeStyle = 'rgba(100, 80, 60, 0.12)';
+                        ctx.strokeStyle = 'rgba(100, 80, 60, 0.11)';
                         ctx.lineWidth = 0.8;
                         ctx.beginPath();
-                        // Hatch pass 1
                         ctx.moveTo(cx + 2, cz + 2);
                         ctx.lineTo(cx + cellSize - 2, cz + cellSize - 2);
-                        // Hatch pass 2
                         ctx.moveTo(cx + cellSize - 6, cz + 2);
                         ctx.lineTo(cx + 2, cz + cellSize - 6);
                         ctx.stroke();
 
-                        // Draw walls around this explored cell
-                        // Check North
+                        // Draw sketchy walls around this explored cell
                         if (z > 0 && mapGrid[x][z - 1] === 1) {
-                            drawSketchyLine(ctx, cx, cz, cx + cellSize);
+                            drawSketchyLine(ctx, cx, cz, cx + cellSize, cz);
                         }
-                        // Check South
                         if (z < GRID_SIZE - 1 && mapGrid[x][z + 1] === 1) {
                             drawSketchyLine(ctx, cx, cz + cellSize, cx + cellSize, cz + cellSize);
                         }
-                        // Check West
                         if (x > 0 && mapGrid[x - 1][z] === 1) {
                             drawSketchyLine(ctx, cx, cz, cx, cz + cellSize);
                         }
-                        // Check East
                         if (x < GRID_SIZE - 1 && mapGrid[x + 1][z] === 1) {
                             drawSketchyLine(ctx, cx + cellSize, cz, cx + cellSize, cz + cellSize);
                         }
@@ -3019,6 +3941,47 @@
                             ctx.textBaseline = 'middle';
                             ctx.fillText('EXIT', cx + cellSize/2, cz + cellSize/2);
                         }
+
+                        // Draw key symbols on explored cells if keys are not collected
+                        keys.forEach(key => {
+                            if (!key.collected) {
+                                const kx = Math.round(key.mesh.position.x / CELL_SIZE);
+                                const kz = Math.round(key.mesh.position.z / CELL_SIZE);
+                                if (x === kx && z === kz) {
+                                    ctx.fillStyle = 'rgba(180, 80, 30, 0.85)';
+                                    ctx.font = 'bold 10px "Courier New", monospace';
+                                    ctx.textAlign = 'center';
+                                    ctx.textBaseline = 'middle';
+                                    ctx.fillText('🔑', cx + cellSize/2, cz + cellSize/2);
+                                }
+                            }
+                        });
+
+                        // Draw crowbar symbol if not collected
+                        if (crowbarItem && !crowbarItem.collected) {
+                            const cbx = Math.round(crowbarItem.mesh.position.x / CELL_SIZE);
+                            const cbz = Math.round(crowbarItem.mesh.position.z / CELL_SIZE);
+                            if (x === cbx && z === cbz) {
+                                    ctx.fillStyle = 'rgba(180, 80, 30, 0.85)';
+                                    ctx.font = 'bold 10px "Courier New", monospace';
+                                    ctx.textAlign = 'center';
+                                    ctx.textBaseline = 'middle';
+                                    ctx.fillText('🔨', cx + cellSize/2, cz + cellSize/2);
+                            }
+                        }
+
+                        // Draw Barricade symbol if not cleared
+                        if (woodenBarricade && !woodenBarricade.cleared) {
+                            const bx = Math.round(woodenBarricade.box.min.x / CELL_SIZE);
+                            const bz = Math.round(woodenBarricade.box.min.z / CELL_SIZE);
+                            if (x === bx && z === bz) {
+                                    ctx.fillStyle = 'rgba(160, 40, 40, 0.85)';
+                                    ctx.font = 'bold 10px "Courier New", monospace';
+                                    ctx.textAlign = 'center';
+                                    ctx.textBaseline = 'middle';
+                                    ctx.fillText('🚧', cx + cellSize/2, cz + cellSize/2);
+                            }
+                        }
                     }
                 }
             }
@@ -3027,36 +3990,40 @@
             const pX = camera.position.x / CELL_SIZE;
             const pZ = camera.position.z / CELL_SIZE;
             
-            // Check if player position is within bounds
             if (pX >= 0 && pX < GRID_SIZE && pZ >= 0 && pZ < GRID_SIZE) {
                 const px = pX * cellSize;
                 const pz = pZ * cellSize;
 
-                // Draw red sketchy arrow indicator
                 const cameraDir = new THREE.Vector3();
                 camera.getWorldDirection(cameraDir);
-                const angle = Math.atan2(cameraDir.x, cameraDir.z); // angle in radians
+                const angle = Math.atan2(cameraDir.x, cameraDir.z);
 
                 ctx.save();
                 ctx.translate(px, pz);
-                ctx.rotate(-angle + Math.PI); // adjust angle to canvas coordinate rotation
+                ctx.rotate(-angle + Math.PI);
+
+                // Draw flashlight beam cone (field of vision)
+                if (state.isFlashlightOn && state.batteryLevel > 0) {
+                    ctx.fillStyle = 'rgba(239, 185, 85, 0.16)';
+                    ctx.beginPath();
+                    ctx.moveTo(0, 0);
+                    ctx.arc(0, 0, 42, -Math.PI/2 - 0.28, -Math.PI/2 + 0.28);
+                    ctx.closePath();
+                    ctx.fill();
+                }
 
                 const arrowColor = '#a8241d';
-                
-                // Draw sketchy red arrow head
                 ctx.strokeStyle = arrowColor;
                 ctx.fillStyle = arrowColor;
                 ctx.lineWidth = 2.0;
 
-                // Draw a circle base
                 ctx.beginPath();
                 ctx.arc(0, 0, 4.5, 0, Math.PI * 2);
                 ctx.stroke();
 
-                // Draw the directional pointer line & arrow tip
                 ctx.beginPath();
                 ctx.moveTo(0, 0);
-                ctx.lineTo(0, -11); // line pointing straight up relative to rotated context
+                ctx.lineTo(0, -11);
                 ctx.stroke();
 
                 ctx.beginPath();
@@ -3140,10 +4107,11 @@
         // ITEM INTERACTIONS (COLLECTION & PROMPTS)
         // ==========================================
         function checkInteractions() {
-            if (!controls.isLocked) return;
+            if (!controls.isLocked && !isTouchDevice) return;
 
             let promptVisible = false;
             let currentAction = null;
+            let customPromptText = null;
 
             // Player coordinates projection box
             const r = 0.6;
@@ -3152,56 +4120,118 @@
                 new THREE.Vector3(camera.position.x + r, camera.position.y + 0.2, camera.position.z + r)
             );
 
-            // Keys Intersection
-            keys.forEach(key => {
-                if (!key.collected && pBox.intersectsBox(key.box)) {
-                    promptVisible = true;
+            // Crowbar Intersection checking
+            if (crowbarItem && !crowbarItem.collected && pBox.intersectsBox(crowbarItem.box)) {
+                promptVisible = true;
+                customPromptText = isTouchDevice ? "TAP INTERACT TO COLLECT CROWBAR" : "Press [E] to collect Crowbar";
+                currentAction = () => {
+                    crowbarItem.collected = true;
+                    crowbarItem.mesh.visible = false;
+                    crowbarItem.light.visible = false;
+                    audio.playBatteryPickup(); // generic metallic pickup sound
+                    
+                    // Show in HUD
+                    const cbIcon = document.getElementById('crowbar-icon');
+                    if (cbIcon) {
+                        cbIcon.classList.remove('opacity-20', 'text-gray-500', 'scale-95');
+                        cbIcon.classList.add('text-red-500', 'opacity-100', 'scale-110', 'animate-pulse');
+                    }
+
+                    state.objective = "CROWBAR COLLECTED. USE IT TO REMOVE THE BARRICADE ON THE STAIRS.";
+                    document.getElementById('objective-text').innerText = state.objective;
+                };
+            }
+
+            // Wooden Barricade Intersection checking
+            if (!promptVisible && woodenBarricade && !woodenBarricade.cleared && pBox.intersectsBox(woodenBarricade.box)) {
+                promptVisible = true;
+                if (crowbarItem && crowbarItem.collected) {
+                    customPromptText = isTouchDevice ? "TAP INTERACT TO BREAK BARRICADE" : "Press [E] to Break Barricade with Crowbar";
                     currentAction = () => {
-                        key.collected = true;
-                        key.mesh.visible = false;
-                        key.light.visible = false;
-                        state.keysCollected++;
-                        audio.playKeyPickup();
+                        woodenBarricade.cleared = true;
+                        scene.remove(woodenBarricade.mesh);
+                        
+                        // Remove physics block
+                        const idx = collidableObjects.indexOf(woodenBarricade.box);
+                        if (idx !== -1) collidableObjects.splice(idx, 1);
 
-                        // Update physical key visual inventory HUD
-                        const keyIdx = keys.indexOf(key);
-                        const icon = document.getElementById(`key-icon-${keyIdx}`);
-                        if (icon) {
-                            icon.classList.remove('opacity-20', 'text-gray-500', 'scale-95');
-                            if (keyIdx === 0) {
-                                icon.classList.add('text-red-500', 'opacity-100', 'scale-110', 'animate-pulse');
-                                icon.querySelector('svg').classList.add('drop-shadow-[0_0_8px_rgba(239,68,68,0.85)]');
-                            } else if (keyIdx === 1) {
-                                icon.classList.add('text-emerald-500', 'opacity-100', 'scale-110', 'animate-pulse');
-                                icon.querySelector('svg').classList.add('drop-shadow-[0_0_8px_rgba(16,185,129,0.85)]');
-                            } else if (keyIdx === 2) {
-                                icon.classList.add('text-blue-500', 'opacity-100', 'scale-110', 'animate-pulse');
-                                icon.querySelector('svg').classList.add('drop-shadow-[0_0_8px_rgba(59,130,246,0.85)]');
-                            }
-                        }
+                        audio.playWoodBreak();
 
-                        // Notify
-                        state.objective = `FOUND KEY (${state.keysCollected}/3). STALKER AGGRESSION INCREASING.`;
-                        state.aggressionMultiplier += 0.45; // Speed up stalker with each key collected
-                        
-                        document.getElementById('keys-hud').innerText = `${state.keysCollected} / 3`;
-                        
-                        if (state.keysCollected === 3) {
-                            state.objective = "ALL KEYS COLLECTED. RUN TO THE EXIT ROOM NOW!";
-                            isExitUnlocked = true;
-                            audio.playDoorUnlock();
-                        }
-                        
+                        state.objective = `BARRICADE CLEARED. STALKER REACHED PEAK ANGER! FIND THE KEYS.`;
                         document.getElementById('objective-text').innerText = state.objective;
+
+                        // Emit to WebSocket
+                        if (socket && socket.readyState === WebSocket.OPEN) {
+                            socket.send(JSON.stringify({
+                                type: 'break_barricade'
+                            }));
+                        }
                     };
+                } else {
+                    customPromptText = "STAIRS ARE BLOCKED BY WOODEN BARRICADE. FIND A CROWBAR.";
                 }
-            });
+            }
+
+            // Keys Intersection
+            if (!promptVisible) {
+                keys.forEach(key => {
+                    if (!key.collected && pBox.intersectsBox(key.box)) {
+                        promptVisible = true;
+                        customPromptText = isTouchDevice ? "TAP INTERACT TO COLLECT KEY" : "Press [E] to collect Key";
+                        currentAction = () => {
+                            key.collected = true;
+                            key.mesh.visible = false;
+                            key.light.visible = false;
+                            state.keysCollected++;
+                            audio.playKeyPickup();
+
+                            // Update physical key visual inventory HUD
+                            const keyIdx = keys.indexOf(key);
+                            if (socket && socket.readyState === WebSocket.OPEN) {
+                                socket.send(JSON.stringify({
+                                    type: 'collect_key',
+                                    index: keyIdx
+                                }));
+                            }
+                            const icon = document.getElementById(`key-icon-${keyIdx}`);
+                            if (icon) {
+                                icon.classList.remove('opacity-20', 'text-gray-500', 'scale-95');
+                                if (keyIdx === 0) {
+                                    icon.classList.add('text-red-500', 'opacity-100', 'scale-110', 'animate-pulse');
+                                    icon.querySelector('svg').classList.add('drop-shadow-[0_0_8px_rgba(239,68,68,0.85)]');
+                                } else if (keyIdx === 1) {
+                                    icon.classList.add('text-emerald-500', 'opacity-100', 'scale-110', 'animate-pulse');
+                                    icon.querySelector('svg').classList.add('drop-shadow-[0_0_8px_rgba(16,185,129,0.85)]');
+                                } else if (keyIdx === 2) {
+                                    icon.classList.add('text-blue-500', 'opacity-100', 'scale-110', 'animate-pulse');
+                                    icon.querySelector('svg').classList.add('drop-shadow-[0_0_8px_rgba(59,130,246,0.85)]');
+                                }
+                            }
+
+                            // Notify
+                            state.objective = `FOUND KEY (${state.keysCollected}/3). STALKER AGGRESSION INCREASING.`;
+                            state.aggressionMultiplier += 0.45; // Speed up stalker with each key collected
+                            
+                            document.getElementById('keys-hud').innerText = `${state.keysCollected} / 3`;
+                            
+                            if (state.keysCollected === 3) {
+                                state.objective = "ALL KEYS COLLECTED. RUN TO THE EXIT ROOM NOW!";
+                                isExitUnlocked = true;
+                                audio.playDoorUnlock();
+                            }
+                            
+                            document.getElementById('objective-text').innerText = state.objective;
+                        };
+                    }
+                });
+            }
 
             // Batteries intersection
             if (!promptVisible) {
                 batteries.forEach(bat => {
                     if (!bat.used && pBox.intersectsBox(bat.box)) {
                         promptVisible = true;
+                        customPromptText = isTouchDevice ? "TAP INTERACT TO COLLECT BATTERY" : "Press [E] to collect Battery";
                         currentAction = () => {
                             bat.used = true;
                             bat.mesh.visible = false;
@@ -3213,14 +4243,92 @@
                 });
             }
 
-            // Exit Doors intersection
+            // Power Generator Console intersection
+            if (!promptVisible && powerGenerator && powerGenerator.box && !state.isPowerRestored && pBox.intersectsBox(powerGenerator.box)) {
+                promptVisible = true;
+                customPromptText = isTouchDevice ? "TAP INTERACT TO RESTORE MAIN POWER" : "Press [E] to Restore Main Power";
+                currentAction = () => {
+                    state.isPowerRestored = true;
+                    
+                    // Lever flips down
+                    if (powerGenerator.leverMesh) {
+                        powerGenerator.leverMesh.rotation.x = 0.65;
+                    }
+                    // Bulb glows green
+                    if (powerGenerator.bulbMesh) {
+                        powerGenerator.bulbMesh.material.color.setHex(0x22c55e);
+                    }
+                    // Point light becomes bright green
+                    if (powerGenerator.light) {
+                        powerGenerator.light.color.setHex(0x22c55e);
+                        powerGenerator.light.intensity = 2.0;
+                    }
+
+                    audio.playGeneratorStart();
+
+                    if (state.keysCollected === 3) {
+                        state.objective = "POWER RESTORED. MAGNETIC LOCK DISENGAGED. ESCAPE NOW!";
+                        isExitUnlocked = true;
+                        audio.playDoorUnlock();
+                    } else {
+                        state.objective = `POWER RESTORED. FIND ALL 3 KEYS TO ESCAPE (${state.keysCollected}/3).`;
+                    }
+                    document.getElementById('objective-text').innerText = state.objective;
+
+                    // Sync to Multiplayer if socket active
+                    if (socket && socket.readyState === WebSocket.OPEN) {
+                        socket.send(JSON.stringify({
+                            type: 'restore_power'
+                        }));
+                    }
+                };
+            }
+
+            // Hidden Story Notes intersection
+            if (!promptVisible) {
+                storyNotes.forEach(note => {
+                    if (!note.collected && pBox.intersectsBox(note.box)) {
+                        promptVisible = true;
+                        customPromptText = isTouchDevice ? "TAP INTERACT TO READ NOTE" : "Press [E] to read Journal Note";
+                        currentAction = () => {
+                            note.collected = true;
+                            if (note.mesh) note.mesh.visible = false;
+                            if (note.light) note.light.visible = false;
+                            
+                            state.notesRead.add(note.index);
+                            audio.playPageFlip();
+
+                            // Open story note overlay panel
+                            document.getElementById('story-note-text').innerText = note.text;
+                            document.getElementById('story-note-overlay').classList.remove('hidden');
+                            
+                            state.isPaused = true;
+                            controls.unlock();
+
+                            // Achievement Historian check
+                            if (state.notesRead.size === 4) {
+                                unlockAchievement('historian');
+                            }
+                        };
+                    }
+                });
+            }
+
+            // Exit Doors intersection (Conditional)
             if (!promptVisible && exitTriggerBox) {
                 if (pBox.intersectsBox(exitTriggerBox)) {
-                    if (isExitUnlocked) {
+                    if (state.keysCollected === 3 && state.isPowerRestored) {
+                        isExitUnlocked = true;
                         triggerVictory();
                     } else {
                         promptVisible = true;
-                        document.getElementById('interaction-prompt').innerText = "DOOR IS LOCKED. REQUIRE 3 KEYS.";
+                        if (state.keysCollected < 3 && !state.isPowerRestored) {
+                            customPromptText = "DOOR SECURED. REQUIRE 3 KEYS & POWER RESTORATION.";
+                        } else if (state.keysCollected < 3 && state.isPowerRestored) {
+                            customPromptText = `DOOR LOCKED. FIND REMAINING KEYS (${state.keysCollected}/3).`;
+                        } else if (state.keysCollected === 3 && !state.isPowerRestored) {
+                            customPromptText = "MAGNETIC LOCKS ENGAGED. ACTIVATE CENTRAL GENERATOR.";
+                        }
                     }
                 }
             }
@@ -3230,8 +4338,11 @@
             if (promptVisible) {
                 promptDom.classList.remove('hidden');
                 if (currentAction) {
-                    promptDom.innerText = "Press [E] to collect / unlock";
+                    promptDom.innerText = customPromptText || (isTouchDevice ? "TAP INTERACT BUTTON" : "Press [E] to interact");
                     activeInteractionCallback = currentAction;
+                } else {
+                    promptDom.innerText = customPromptText || "DOOR IS LOCKED";
+                    activeInteractionCallback = null;
                 }
             } else {
                 promptDom.classList.add('hidden');
@@ -3295,7 +4406,13 @@
             }
 
             document.getElementById('keys-hud').innerText = "0 / 3";
-            document.getElementById('objective-text').innerText = "FIND 3 KEYS TO UNLOCK THE EXIT";
+            document.getElementById('objective-text').innerText = "FIND THE CROWBAR & 3 KEYS. ESCAPE THE BASEMENT.";
+
+            // Reset crowbar slot HUD
+            const cbIcon = document.getElementById('crowbar-icon');
+            if (cbIcon) {
+                cbIcon.className = "key-slot opacity-20 text-gray-500 transition-all duration-500 transform scale-95 ml-auto flex items-center gap-1 border-l border-white/10 pl-3";
+            }
 
             // Reset visual physical key inventory slots
             for (let k = 0; k < 3; k++) {
@@ -3316,6 +4433,32 @@
             lampsList = [];
             replayBuffer = [];
             playerElevation = 0;
+
+            // Cleanup multiplayer socket and remote player visual objects from previous run
+            if (socket) {
+                try {
+                    socket.close();
+                } catch(e){}
+                socket = null;
+            }
+            if (typeof remotePlayers !== 'undefined') {
+                remotePlayers.forEach(rp => {
+                    if (rp.mesh) scene.remove(rp.mesh);
+                    if (rp.spotLight) {
+                        scene.remove(rp.spotLight);
+                        scene.remove(rp.spotLight.target);
+                    }
+                    if (rp.tagElement) rp.tagElement.remove();
+                });
+                remotePlayers.clear();
+            }
+            updateSurvivorsHUD();
+
+            // Hide/Clear in-game text chat messages
+            const chatBox = document.getElementById('chat-container');
+            if (chatBox) chatBox.classList.add('hidden');
+            const chatMessages = document.getElementById('chat-messages');
+            if (chatMessages) chatMessages.innerHTML = '';
             
             // Initialize map variables
             exploredGrid = Array(GRID_SIZE).fill(null).map(() => Array(GRID_SIZE).fill(false));
@@ -3329,6 +4472,9 @@
                 monster.mesh = null;
             }
 
+            // Connect to multiplayer lobby
+            initMultiplayer();
+
             // Remove previous instanced meshes
             while(scene.children.length > 2) {
                 scene.remove(scene.children[scene.children.length - 1]);
@@ -3339,11 +4485,23 @@
             scene.add(flashlightTarget);
 
             // Re-generate Procedural layout
+            enableSeededRandom(lobbySeed);
             generateBasement();
+            disableSeededRandom();
 
             // Position player at entrance walkable cell (1, 1)
             camera.position.set(1 * CELL_SIZE, 1.6, 1 * CELL_SIZE);
-            controls.lock();
+            
+            if (isTouchDevice) {
+                state.isPaused = false;
+                document.getElementById('screen-overlay').style.opacity = '0';
+                document.getElementById('screen-overlay').style.pointerEvents = 'none';
+                document.getElementById('hud-top').style.opacity = '1';
+                document.getElementById('hud-bottom').style.opacity = '1';
+                document.getElementById('mobile-controls-overlay').classList.remove('hidden');
+            } else {
+                controls.lock();
+            }
 
             // Spawn monster delayed slightly for creepiness
             setTimeout(() => {
@@ -3362,6 +4520,13 @@
             isCaughtWaitingForReplay = true;
             caughtPlayerPos = camera.position.clone();
             caughtMonsterPos = monster.pos.clone();
+
+            // Notify other players of death
+            if (socket && socket.readyState === WebSocket.OPEN) {
+                socket.send(JSON.stringify({
+                    type: 'died'
+                }));
+            }
 
             // Hide map overlay if open
             isMapOpen = false;
@@ -3472,6 +4637,23 @@
 
             saveCompletedRunStats(totalSec);
 
+            // Check and unlock achievements
+            if (!state.usedSprint) {
+                unlockAchievement('ghost');
+            }
+            if (!state.wasSpotted) {
+                unlockAchievement('invisible');
+            }
+            if (state.notesRead.size === 4) {
+                unlockAchievement('historian');
+            }
+            if (totalSec < 120) {
+                unlockAchievement('speedrunner');
+            }
+            if (config.difficulty === 'HARD') {
+                unlockAchievement('hardcore');
+            }
+
             document.getElementById('victory-time').innerText = formatted;
             document.getElementById('victory-pb').innerText = getBestTimeFormatted();
 
@@ -3527,9 +4709,340 @@
         }
 
         // ==========================================
+        // MULTIPLAYER CLIENT LOGIC & EVENT SYSTEM
+        // ==========================================
+        function initMultiplayer() {
+            const usernameInput = document.getElementById('player-username');
+            const username = (usernameInput ? usernameInput.value : 'SURVIVOR') || 'SURVIVOR';
+
+            const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsUrl = `${wsProtocol}//${window.location.host}`;
+            
+            console.log("Connecting to multiplayer server:", wsUrl);
+            socket = new WebSocket(wsUrl);
+
+            socket.onopen = () => {
+                console.log("Connected to server successfully!");
+                socket.send(JSON.stringify({
+                    type: 'join',
+                    username,
+                    x: camera.position.x,
+                    y: camera.position.y,
+                    z: camera.position.z,
+                    rotY: camera.rotation.y
+                }));
+                
+                // Display text chat panel
+                const chatBox = document.getElementById('chat-container');
+                if (chatBox) chatBox.classList.remove('hidden');
+            };
+
+            socket.onmessage = (event) => {
+                try {
+                    const data = JSON.parse(event.data);
+
+                    switch (data.type) {
+                        case 'init':
+                            myId = data.playerId;
+                            isHost = data.isHost;
+                            lobbySeed = data.seed || 123456;
+                            
+                            // Re-sync collected keys
+                            if (data.collectedKeys) {
+                                data.collectedKeys.forEach(idx => {
+                                    if (keys[idx]) {
+                                        keys[idx].collected = true;
+                                        if (keys[idx].mesh) keys[idx].mesh.visible = false;
+                                        if (keys[idx].light) keys[idx].light.visible = false;
+                                    }
+                                });
+                                state.keysCollected = data.collectedKeys.length;
+                                document.getElementById('keys-hud').innerText = `${state.keysCollected} / 3`;
+                                
+                                // Update HUD slots
+                                data.collectedKeys.forEach(kIdx => {
+                                    const icon = document.getElementById(`key-icon-${kIdx}`);
+                                    if (icon) {
+                                        icon.classList.remove('opacity-20', 'text-gray-500', 'scale-95');
+                                        if (kIdx === 0) icon.classList.add('text-red-500', 'opacity-100', 'scale-110');
+                                        if (kIdx === 1) icon.classList.add('text-emerald-500', 'opacity-100', 'scale-110');
+                                        if (kIdx === 2) icon.classList.add('text-blue-500', 'opacity-100', 'scale-110');
+                                    }
+                                });
+
+                                if (state.keysCollected === 3) {
+                                    isExitUnlocked = true;
+                                    state.objective = "ALL KEYS COLLECTED. RUN TO THE EXIT ROOM NOW!";
+                                    document.getElementById('objective-text').innerText = state.objective;
+                                }
+                            }
+                            if (data.isBarricadeBroken && woodenBarricade) {
+                                woodenBarricade.cleared = true;
+                                woodenBarricade.mesh.visible = false;
+                                const idx = collidableObjects.indexOf(woodenBarricade.box);
+                                if (idx !== -1) collidableObjects.splice(idx, 1);
+                            }
+                            
+                            // Load existing players
+                            for (const id in data.players) {
+                                if (id !== myId) {
+                                    createRemotePlayer(data.players[id]);
+                                }
+                            }
+                            updateSurvivorsHUD();
+                            break;
+
+                        case 'player_joined':
+                            if (data.player.id !== myId) {
+                                createRemotePlayer(data.player);
+                                addChatMessage("System", `${data.player.username} joined the basement.`);
+                                updateSurvivorsHUD();
+                            }
+                            break;
+
+                        case 'player_updated':
+                            if (data.id !== myId) {
+                                const rp = remotePlayers.get(data.id);
+                                if (rp) {
+                                    rp.targetX = data.state.x;
+                                    rp.targetY = data.state.y;
+                                    rp.targetZ = data.state.z;
+                                    rp.targetRotY = data.state.rotY;
+                                    rp.targetHeadRotX = data.state.headRotX;
+                                    rp.isCrouching = data.state.isCrouching;
+                                    rp.isSprinting = data.state.isSprinting;
+                                    rp.isFlashlightOn = data.state.isFlashlightOn;
+                                    rp.activeItem = data.state.activeItem;
+                                    rp.isDead = data.state.isDead;
+                                } else {
+                                    createRemotePlayer({ id: data.id, ...data.state });
+                                }
+                            }
+                            break;
+
+                        case 'player_left':
+                            const rp = remotePlayers.get(data.id);
+                            if (rp) {
+                                if (rp.mesh) scene.remove(rp.mesh);
+                                if (rp.spotLight) {
+                                    scene.remove(rp.spotLight);
+                                    scene.remove(rp.spotLight.target);
+                                }
+                                if (rp.tagElement) rp.tagElement.remove();
+                                remotePlayers.delete(data.id);
+                                addChatMessage("System", `${rp.username} left.`);
+                                updateSurvivorsHUD();
+                            }
+                            break;
+
+                        case 'key_collected':
+                            const kIdx = data.index;
+                            if (keys[kIdx] && !keys[kIdx].collected) {
+                                keys[kIdx].collected = true;
+                                if (keys[kIdx].mesh) keys[kIdx].mesh.visible = false;
+                                if (keys[kIdx].light) keys[kIdx].light.visible = false;
+                                state.keysCollected++;
+                                document.getElementById('keys-hud').innerText = `${state.keysCollected} / 3`;
+                                audio.playKeyPickup();
+                                
+                                const icon = document.getElementById(`key-icon-${kIdx}`);
+                                if (icon) {
+                                    icon.classList.remove('opacity-20', 'text-gray-500', 'scale-95');
+                                    if (kIdx === 0) icon.classList.add('text-red-500', 'opacity-100', 'scale-110');
+                                    if (kIdx === 1) icon.classList.add('text-emerald-500', 'opacity-100', 'scale-110');
+                                    if (kIdx === 2) icon.classList.add('text-blue-500', 'opacity-100', 'scale-110');
+                                }
+
+                                if (state.keysCollected === 3) {
+                                    isExitUnlocked = true;
+                                    state.objective = "ALL KEYS COLLECTED. RUN TO THE EXIT ROOM NOW!";
+                                    audio.playDoorUnlock();
+                                } else {
+                                    state.objective = `FOUND KEY (${state.keysCollected}/3). STALKER AGGRESSION INCREASING.`;
+                                }
+                                document.getElementById('objective-text').innerText = state.objective;
+
+                                const collector = remotePlayers.get(data.collectorId);
+                                const collectorName = collector ? collector.username : "Someone";
+                                addChatMessage("System", `${collectorName} collected Key #${kIdx + 1}!`);
+                            }
+                            break;
+
+                        case 'barricade_broken':
+                            if (woodenBarricade && !woodenBarricade.cleared) {
+                                woodenBarricade.cleared = true;
+                                woodenBarricade.mesh.visible = false;
+                                const idx = collidableObjects.indexOf(woodenBarricade.box);
+                                if (idx !== -1) collidableObjects.splice(idx, 1);
+                                audio.playMetalThud();
+                                
+                                const breaker = remotePlayers.get(data.breakerId);
+                                const breakerName = breaker ? breaker.username : "Someone";
+                                addChatMessage("System", `${breakerName} broke the wooden barricade!`);
+                            }
+                            break;
+
+                        case 'monster_synced':
+                            syncedMonsterData = data.monster;
+                            break;
+
+                        case 'host_migrated':
+                            isHost = (data.hostId === myId);
+                            console.log("Host migrated. Am I host?", isHost);
+                            addChatMessage("System", isHost ? "You are now the authoritative game host." : "Host has migrated.");
+                            break;
+
+                        case 'player_died':
+                            const deadRp = remotePlayers.get(data.id);
+                            if (deadRp) {
+                                deadRp.isDead = true;
+                                if (deadRp.mesh) {
+                                    deadRp.mesh.rotation.z = Math.PI / 2;
+                                    deadRp.mesh.position.y = 0.1;
+                                }
+                                addChatMessage("System", `⚠️ ${deadRp.username} was caught by the Stalker!`);
+                                updateSurvivorsHUD();
+                            }
+                            break;
+
+                        case 'chat':
+                            addChatMessage(data.sender, data.text);
+                            break;
+                    }
+                } catch (err) {
+                    console.error("Error parsing WS message:", err);
+                }
+            };
+
+            socket.onclose = () => {
+                console.log("WebSocket socket disconnected.");
+            };
+        }
+
+        function createRemotePlayer(playerData) {
+            if (remotePlayers.has(playerData.id)) return;
+
+            // Instantiate cartoon mesh
+            const mesh = createCharacterModel();
+            mesh.position.set(playerData.x, playerData.y - 1.6, playerData.z);
+            mesh.rotation.y = playerData.rotY;
+            scene.add(mesh);
+
+            // Remote flashlight light beam
+            const spotLight = new THREE.SpotLight(0xffedd4, 1.5, 12, Math.PI / 5, 0.5, 1.0);
+            spotLight.castShadow = false; // Disable to ensure high framerates
+            scene.add(spotLight);
+            scene.add(spotLight.target);
+
+            // HTML overlay name tag
+            const tagElement = document.createElement('div');
+            tagElement.className = 'absolute font-mono text-[9px] text-zinc-300 bg-black/80 px-1.5 py-0.5 rounded border border-white/5 pointer-events-none transform -translate-x-1/2 -translate-y-full z-20 select-none uppercase tracking-wider';
+            tagElement.innerText = playerData.username;
+            document.body.appendChild(tagElement);
+
+            remotePlayers.set(playerData.id, {
+                id: playerData.id,
+                username: playerData.username,
+                mesh,
+                spotLight,
+                tagElement,
+                targetX: playerData.x,
+                targetY: playerData.y,
+                targetZ: playerData.z,
+                targetRotY: playerData.rotY,
+                targetHeadRotX: playerData.headRotX || 0,
+                isCrouching: playerData.isCrouching || false,
+                isSprinting: playerData.isSprinting || false,
+                isFlashlightOn: playerData.isFlashlightOn !== false,
+                activeItem: playerData.activeItem || 'flashlight',
+                isDead: playerData.isDead || false,
+                lastX: playerData.x,
+                lastZ: playerData.z,
+                walkCycle: 0
+            });
+        }
+
+        function updateSurvivorsHUD() {
+            const list = document.getElementById('survivors-list');
+            if (!list) return;
+
+            let html = `
+                <div class="flex justify-between border-b border-white/5 pb-1">
+                    <span class="text-emerald-500 font-bold">▶ YOU</span>
+                    <span class="text-emerald-400 font-semibold uppercase">${state.isGameOver ? 'DEAD' : 'ALIVE'}</span>
+                </div>
+            `;
+
+            remotePlayers.forEach(rp => {
+                const statusColor = rp.isDead ? 'text-zinc-600 font-normal line-through' : 'text-zinc-300';
+                const statusText = rp.isDead ? '<span class="text-zinc-600 uppercase text-[8px]">DEAD</span>' : '<span class="text-emerald-500 font-bold text-[8px]">ALIVE</span>';
+                html += `
+                    <div class="flex justify-between items-center mt-1">
+                        <span class="${statusColor}">${rp.username}</span>
+                        <span>${statusText}</span>
+                    </div>
+                `;
+            });
+
+            list.innerHTML = html;
+        }
+
+        function addChatMessage(sender, text) {
+            const chatMessages = document.getElementById('chat-messages');
+            if (!chatMessages) return;
+
+            const isSystem = (sender === 'System');
+            const senderColor = isSystem ? 'text-red-500 font-bold' : 'text-amber-500 font-semibold';
+            const msgHtml = `<div class="leading-relaxed"><span class="${senderColor}">[${sender}]</span>: <span class="text-zinc-100">${text}</span></div>`;
+            
+            chatMessages.insertAdjacentHTML('beforeend', msgHtml);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function sendChatMessage() {
+            const chatInput = document.getElementById('chat-input');
+            if (!chatInput) return;
+
+            const text = chatInput.value.trim();
+            if (text !== '') {
+                if (socket && socket.readyState === WebSocket.OPEN) {
+                    socket.send(JSON.stringify({
+                        type: 'chat',
+                        text
+                    }));
+                }
+                chatInput.value = '';
+            }
+            chatInput.blur();
+            controls.lock();
+        }
+
+        // ==========================================
         // KEYBOARD & SENSORY INPUT SYSTEM
         // ==========================================
         const onKeyDown = function (event) {
+            if (document.activeElement === document.getElementById('chat-input')) {
+                if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+                    sendChatMessage();
+                    event.preventDefault();
+                }
+                if (event.code === 'Escape') {
+                    document.getElementById('chat-input').blur();
+                    controls.lock();
+                }
+                return;
+            }
+
+            if ((event.code === 'Enter' || event.code === 'NumpadEnter') && state.isPlaying && !state.isGameOver && !state.isVictorious) {
+                const chatInput = document.getElementById('chat-input');
+                if (chatInput) {
+                    controls.unlock();
+                    chatInput.focus();
+                    event.preventDefault();
+                    return;
+                }
+            }
+
             if (isCaughtWaitingForReplay) {
                 if (event.code === 'KeyR') {
                     startDeathReplay();
@@ -3594,6 +5107,9 @@
         };
 
         const onKeyUp = function (event) {
+            if (document.activeElement === document.getElementById('chat-input')) {
+                return;
+            }
             switch (event.code) {
                 case 'ArrowUp':
                 case 'KeyW':
@@ -3743,6 +5259,108 @@
                 }
             }
 
+            // Multiplayer Sync: Send our player state periodically and render other survivors
+            if (state.isPlaying && !state.isPaused && !state.isGameOver && !state.isVictorious) {
+                // Send player updates to server
+                if (socket && socket.readyState === WebSocket.OPEN) {
+                    const cameraDir = new THREE.Vector3();
+                    camera.getWorldDirection(cameraDir);
+                    const playerRotY = Math.atan2(cameraDir.x, cameraDir.z);
+                    const headRotX = camera.rotation.x;
+
+                    socket.send(JSON.stringify({
+                        type: 'update',
+                        state: {
+                            x: camera.position.x,
+                            y: camera.position.y,
+                            z: camera.position.z,
+                            rotY: playerRotY,
+                            headRotX: headRotX,
+                            isCrouching: isCrouching,
+                            isSprinting: isSprinting,
+                            isFlashlightOn: state.isFlashlightOn,
+                            activeItem: currentHoldingItem,
+                            isDead: state.isGameOver
+                        }
+                    }));
+                }
+            }
+
+            // Render other remote players
+            if (typeof remotePlayers !== 'undefined') {
+                remotePlayers.forEach((player, id) => {
+                    if (!player.mesh) return;
+                    // Position remote player base (camera height is 1.6, so floor is targetY - 1.6)
+                    player.mesh.position.set(player.targetX, player.targetY - 1.6, player.targetZ);
+                    player.mesh.rotation.y = player.targetRotY;
+
+                    // Animate head pitch
+                    if (player.mesh.parts && player.mesh.parts.head) {
+                        player.mesh.parts.head.rotation.x = player.targetHeadRotX;
+                    }
+
+                    // Flashlight beam matching remote player looking direction
+                    const showFlashlight = player.isFlashlightOn && (player.activeItem === 'flashlight' || player.activeItem === null);
+                    if (player.spotLight) {
+                        player.spotLight.visible = showFlashlight;
+                        if (showFlashlight) {
+                            player.spotLight.position.set(player.targetX, player.targetY - 0.2, player.targetZ);
+                            const dx = Math.sin(player.targetRotY) * Math.cos(player.targetHeadRotX);
+                            const dz = Math.cos(player.targetRotY) * Math.cos(player.targetHeadRotX);
+                            const dy = Math.sin(player.targetHeadRotX);
+                            player.spotLight.target.position.set(
+                                player.targetX + dx * 5,
+                                player.targetY - 0.2 + dy * 5,
+                                player.targetZ + dz * 5
+                            );
+                        }
+                    }
+
+                    // Walking leg animation for other players
+                    if (player.mesh.parts && player.mesh.parts.leftLeg && player.mesh.parts.rightLeg) {
+                        const distMoved = Math.sqrt(
+                            (player.mesh.position.x - player.lastX) * (player.mesh.position.x - player.lastX) +
+                            (player.mesh.position.z - player.lastZ) * (player.mesh.position.z - player.lastZ)
+                        );
+                        if (distMoved > 0.001) {
+                            player.walkCycle = (player.walkCycle || 0) + (player.isSprinting ? 15.0 : 8.0) * delta;
+                            player.mesh.parts.leftLeg.rotation.x = Math.sin(player.walkCycle) * 0.45;
+                            player.mesh.parts.rightLeg.rotation.x = -Math.sin(player.walkCycle) * 0.45;
+                            if (player.mesh.parts.leftArm && player.mesh.parts.rightArm) {
+                                player.mesh.parts.leftArm.rotation.x = -Math.sin(player.walkCycle) * 0.35;
+                                player.mesh.parts.rightArm.rotation.x = Math.sin(player.walkCycle) * 0.35;
+                            }
+                        } else {
+                            player.mesh.parts.leftLeg.rotation.x = 0;
+                            player.mesh.parts.rightLeg.rotation.x = 0;
+                            if (player.mesh.parts.leftArm && player.mesh.parts.rightArm) {
+                                player.mesh.parts.leftArm.rotation.x = 0;
+                                player.mesh.parts.rightArm.rotation.x = 0;
+                            }
+                        }
+                        player.lastX = player.mesh.position.x;
+                        player.lastZ = player.mesh.position.z;
+                    }
+
+                    // Project 3D name tag to HTML screen space
+                    const tag = player.tagElement;
+                    if (tag) {
+                        const tempV = new THREE.Vector3(player.targetX, player.targetY + 0.4, player.targetZ);
+                        tempV.project(camera);
+                        
+                        if (tempV.z > 1.0) {
+                            tag.style.display = 'none';
+                        } else {
+                            tag.style.display = 'block';
+                            const x = (tempV.x * 0.5 + 0.5) * window.innerWidth;
+                            const y = (tempV.y * -0.5 + 0.5) * window.innerHeight;
+                            tag.style.left = `${x}px`;
+                            tag.style.top = `${y}px`;
+                        }
+                    }
+                });
+            }
+
             // WebGL rendering execution
             renderer.render(scene, camera);
         }
@@ -3755,9 +5373,14 @@
             overlay.style.opacity = '1';
             overlay.style.pointerEvents = 'all';
 
+            // Hide mobile controls overlay when showing any menu overlay
+            const mobControls = document.getElementById('mobile-controls-overlay');
+            if (mobControls) mobControls.classList.add('hidden');
+
             // Hide all sub menus
             document.getElementById('menu-main').classList.add('hidden');
             document.getElementById('menu-settings').classList.add('hidden');
+            document.getElementById('menu-achievements').classList.add('hidden');
             document.getElementById('menu-credits').classList.add('hidden');
             document.getElementById('screen-gameover').classList.add('hidden');
             document.getElementById('screen-victory').classList.add('hidden');
@@ -3829,6 +5452,34 @@
             showScreen('menu-settings');
         });
 
+        document.getElementById('btn-achievements').addEventListener('click', () => {
+            updateAchievementsUI();
+            showScreen('menu-achievements');
+        });
+
+        document.getElementById('btn-achievements-back').addEventListener('click', () => {
+            showScreen('menu-main');
+        });
+
+        const setDifficulty = (diff) => {
+            config.difficulty = diff.toUpperCase();
+            saveConfig();
+            updateDifficultyUI();
+        };
+
+        document.getElementById('btn-diff-easy').addEventListener('click', () => setDifficulty('easy'));
+        document.getElementById('btn-diff-normal').addEventListener('click', () => setDifficulty('normal'));
+        document.getElementById('btn-diff-hard').addEventListener('click', () => setDifficulty('hard'));
+
+        document.getElementById('btn-close-note').addEventListener('click', () => {
+            document.getElementById('story-note-overlay').classList.add('hidden');
+            state.isPaused = false;
+            // re-lock controls to resume playing
+            if (!isTouchDevice) {
+                controls.lock();
+            }
+        });
+
         document.getElementById('btn-credits').addEventListener('click', () => {
             showScreen('menu-credits');
         });
@@ -3887,7 +5538,16 @@
         });
 
         document.getElementById('btn-pause-resume').addEventListener('click', () => {
-            controls.lock();
+            if (isTouchDevice) {
+                state.isPaused = false;
+                document.getElementById('screen-overlay').style.opacity = '0';
+                document.getElementById('screen-overlay').style.pointerEvents = 'none';
+                document.getElementById('hud-top').style.opacity = '1';
+                document.getElementById('hud-bottom').style.opacity = '1';
+                document.getElementById('mobile-controls-overlay').classList.remove('hidden');
+            } else {
+                controls.lock();
+            }
         });
 
         document.getElementById('btn-pause-menu').addEventListener('click', () => {
@@ -3905,6 +5565,176 @@
         document.getElementById('slider-sensitivity').addEventListener('input', (e) => {
             document.getElementById('sensitivity-lbl').innerText = parseFloat(e.target.value).toFixed(1);
         });
+
+        // ==========================================
+        // TOUCH CONTROLS INTERACTIVE SETUP (MOBILE FRIENDLY)
+        // ==========================================
+        if (isTouchDevice) {
+            // Hide crosshair on mobile for cleaner immersion
+            const crosshair = document.getElementById('crosshair');
+            if (crosshair) crosshair.style.display = 'none';
+
+            // Swipe Camera Rotation (right side touch)
+            document.addEventListener('touchstart', (e) => {
+                if (!state.isPlaying || state.isPaused) return;
+                for (let i = 0; i < e.changedTouches.length; i++) {
+                    const touch = e.changedTouches[i];
+                    // If touch is on the right 60% of the screen, use for camera look
+                    if (touch.clientX > window.innerWidth * 0.4 && touchCamId === null) {
+                        touchCamId = touch.identifier;
+                        touchStartX = touch.clientX;
+                        touchStartY = touch.clientY;
+                    }
+                }
+            }, { passive: true });
+
+            document.addEventListener('touchmove', (e) => {
+                if (!state.isPlaying || state.isPaused) return;
+                for (let i = 0; i < e.changedTouches.length; i++) {
+                    const touch = e.changedTouches[i];
+                    if (touch.identifier === touchCamId) {
+                        const deltaX = touch.clientX - touchStartX;
+                        const deltaY = touch.clientY - touchStartY;
+                        touchStartX = touch.clientX;
+                        touchStartY = touch.clientY;
+
+                        // Rotate camera with customizable sensitivity
+                        camera.rotation.y -= deltaX * touchSensitivity * config.sensitivity;
+                        camera.rotation.x -= deltaY * touchSensitivity * config.sensitivity;
+                        camera.rotation.x = Math.max(-Math.PI / 2.05, Math.min(Math.PI / 2.05, camera.rotation.x));
+                    }
+                }
+            }, { passive: false });
+
+            document.addEventListener('touchend', (e) => {
+                for (let i = 0; i < e.changedTouches.length; i++) {
+                    const touch = e.changedTouches[i];
+                    if (touch.identifier === touchCamId) {
+                        touchCamId = null;
+                    }
+                }
+            }, { passive: true });
+
+            // Virtual Joystick Drag
+            const joystickZone = document.getElementById('joystick-zone');
+            const joystickKnob = document.getElementById('joystick-knob');
+            if (joystickZone && joystickKnob) {
+                const maxDrag = 42;
+
+                const handleJoystickMove = (clientX, clientY) => {
+                    const rect = joystickZone.getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+
+                    let dx = clientX - centerX;
+                    let dy = clientY - centerY;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist > maxDrag) {
+                        dx = (dx / dist) * maxDrag;
+                        dy = (dy / dist) * maxDrag;
+                    }
+
+                    joystickKnob.style.transform = `translate(${dx}px, ${dy}px)`;
+                    joystickX = dx / maxDrag;
+                    joystickY = dy / maxDrag;
+                };
+
+                joystickZone.addEventListener('touchstart', (e) => {
+                    if (!state.isPlaying || state.isPaused) return;
+                    const touch = e.changedTouches[0];
+                    joystickActive = true;
+                    joystickTouchId = touch.identifier;
+                    handleJoystickMove(touch.clientX, touch.clientY);
+                }, { passive: true });
+
+                document.addEventListener('touchmove', (e) => {
+                    if (!joystickActive) return;
+                    for (let i = 0; i < e.changedTouches.length; i++) {
+                        const touch = e.changedTouches[i];
+                        if (touch.identifier === joystickTouchId) {
+                            handleJoystickMove(touch.clientX, touch.clientY);
+                        }
+                    }
+                }, { passive: false });
+
+                const resetJoystick = () => {
+                    joystickActive = false;
+                    joystickTouchId = null;
+                    joystickX = 0;
+                    joystickY = 0;
+                    joystickKnob.style.transform = 'translate(0px, 0px)';
+                };
+
+                document.addEventListener('touchend', (e) => {
+                    if (!joystickActive) return;
+                    for (let i = 0; i < e.changedTouches.length; i++) {
+                        const touch = e.changedTouches[i];
+                        if (touch.identifier === joystickTouchId) {
+                            resetJoystick();
+                        }
+                    }
+                }, { passive: true });
+            }
+
+            // Mobile Button Event Handlers
+            document.getElementById('btn-mobile-interact').addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                if (activeInteractionCallback) {
+                    activeInteractionCallback();
+                }
+            }, { passive: false });
+
+            // Crouch Button Toggle
+            const btnCrouch = document.getElementById('btn-mobile-crouch');
+            btnCrouch.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                isCrouching = !isCrouching;
+                if (isCrouching) {
+                    btnCrouch.classList.remove('bg-black/85', 'text-zinc-400');
+                    btnCrouch.classList.add('bg-red-500/20', 'text-red-500', 'border-red-500/40');
+                } else {
+                    btnCrouch.classList.remove('bg-red-500/20', 'text-red-500', 'border-red-500/40');
+                    btnCrouch.classList.add('bg-black/85', 'text-zinc-400');
+                }
+            }, { passive: false });
+
+            // Sprint Button Press/Release (active state)
+            const btnSprint = document.getElementById('btn-mobile-sprint');
+            btnSprint.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                isSprinting = true;
+                btnSprint.classList.remove('bg-black/85', 'text-zinc-400');
+                btnSprint.classList.add('bg-amber-500/20', 'text-amber-500', 'border-amber-500/40');
+            }, { passive: false });
+
+            btnSprint.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                isSprinting = false;
+                btnSprint.classList.remove('bg-amber-500/20', 'text-amber-500', 'border-amber-500/40');
+                btnSprint.classList.add('bg-black/85', 'text-zinc-400');
+            }, { passive: false });
+
+            // Flashlight button
+            document.getElementById('btn-mobile-flashlight').addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                state.isFlashlightOn = !state.isFlashlightOn;
+                audio.playFlashlightClick();
+            }, { passive: false });
+
+            // Map button
+            document.getElementById('btn-mobile-map').addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                togglePaperMap();
+            }, { passive: false });
+
+            // Pause button
+            document.getElementById('btn-mobile-pause').addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                state.isPaused = true;
+                openPauseMenu();
+            }, { passive: false });
+        }
 
         // Initialize Game Systems on Startup
         initEngine();
